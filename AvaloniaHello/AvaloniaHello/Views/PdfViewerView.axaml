@@ -24,8 +24,28 @@
 
     <Border Grid.Row="1" Background="#0f172a" Padding="12" Margin="0,0,8,0">
       <ScrollViewer HorizontalScrollBarVisibility="Disabled">
-        <ListBox ItemsSource="{Binding Thumbnails}" SelectedIndex="{Binding ActivePageIndex}"
-                 BorderThickness="0" Background="Transparent">
+        <ListBox ItemsSource="{Binding Thumbnails}" 
+                 SelectedIndex="{Binding ActivePageIndex}"
+                 BorderThickness="0" 
+                 Background="Transparent"
+                 SelectionMode="Single">
+          <ListBox.Styles>
+            <!-- Remove default selection blue overlay -->
+            <Style Selector="ListBoxItem">
+              <Setter Property="Background" Value="Transparent"/>
+              <Setter Property="Padding" Value="0"/>
+              <Setter Property="Margin" Value="0"/>
+            </Style>
+            <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+              <Setter Property="Background" Value="Transparent"/>
+            </Style>
+            <Style Selector="ListBoxItem:selected">
+              <Setter Property="Background" Value="Transparent"/>
+            </Style>
+            <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+              <Setter Property="Background" Value="Transparent"/>
+            </Style>
+          </ListBox.Styles>
           <ListBox.ItemTemplate>
             <DataTemplate x:DataType="vm:PdfViewerViewModel+PageThumbnail">
               <StackPanel Spacing="8" Margin="0,0,0,16">
@@ -40,8 +60,21 @@
       </ScrollViewer>
     </Border>
 
-    <Border Grid.Row="1" Grid.Column="1" Background="#0b1522" Margin="8,0,0,0">
-      <mupdf:PDFRenderer x:Name="PdfRenderer" Background="#111827" />
+    <Border Grid.Row="1" Grid.Column="1" Background="#0b1522" Margin="8,0,0,0" ClipToBounds="True">
+      <Grid ClipToBounds="True">
+        <mupdf:PDFRenderer x:Name="PdfRenderer" Background="#111827" />
+        
+        <!-- Error message overlay -->
+        <Border Background="#DC2626" Padding="20" Margin="40"
+               VerticalAlignment="Center" HorizontalAlignment="Center"
+               CornerRadius="8" IsVisible="{Binding HasError}">
+          <StackPanel Spacing="10" MaxWidth="500">
+            <TextBlock Text="⚠️ Error Loading PDF" FontSize="18" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="{Binding ErrorMessage}" TextWrapping="Wrap" Foreground="White" FontSize="14"/>
+            <TextBlock Text="Check the console output for more details." Foreground="#FEE2E2" FontSize="12"/>
+          </StackPanel>
+        </Border>
+      </Grid>
     </Border>
   </Grid>
 </UserControl>

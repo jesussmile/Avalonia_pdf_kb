@@ -28,5 +28,6 @@
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="MuPDFCore.MuPDFRenderer" />
+    <PackageReference Include="MuPDFCore.NativeAssets.Win-x64" />
   </ItemGroup>
 </Project>
