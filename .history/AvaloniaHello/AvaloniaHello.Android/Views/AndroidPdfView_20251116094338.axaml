@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaHello.ViewModels"
+             mc:Ignorable="d"
+             x:Class="AvaloniaHello.Views.AndroidPdfView"
+             x:DataType="vm:AndroidPdfViewModel"
+             d:DesignWidth="1280" d:DesignHeight="768">
+  <Grid RowDefinitions="Auto,*">
+    <Border Background="#111827" Padding="16,12" Height="64">
+      <Grid ColumnDefinitions="Auto,*,Auto" VerticalAlignment="Center">
+        <Button Content="← Back"
+                Command="{Binding BackCommand}"
+                Height="38"
+                Padding="20,0"
+                Background="#374151"
+                Foreground="White"
+                FontWeight="SemiBold"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="16">
+          <TextBlock Text="GDL90 Viewer" Foreground="#f9fafb" FontSize="20" FontWeight="SemiBold"/>
+          <TextBlock Text="{Binding PageCount, StringFormat='Pages: {0}'}" Foreground="#cbd5f5"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+            <Button Content="◀"
+              Width="42"
+              Command="{Binding PreviousPageCommand}"/>
+          <TextBlock Text="{Binding DisplayPageNumber, StringFormat='Page {0}'}"
+                     Foreground="#e5e7eb"
+                     VerticalAlignment="Center"/>
+            <Button Content="▶"
+              Width="42"
+              Command="{Binding NextPageCommand}"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Border Grid.Row="1" Background="#0b1522" Padding="16">
+      <Grid RowDefinitions="Auto,*">
+        <StackPanel Orientation="Vertical" Spacing="8">
+          <TextBlock Text="{Binding ErrorMessage}" Foreground="#fca5a5" IsVisible="{Binding HasError}"/>
+          <ProgressBar IsIndeterminate="True" Height="4" IsVisible="{Binding IsBusy}"/>
+          <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+            <TextBlock Text="Zoom" Foreground="#e5e7eb"/>
+            <Slider Minimum="0.75" Maximum="2.5" Width="180" Value="{Binding Zoom, Mode=TwoWay}"/>
+            <TextBlock Text="{Binding ImageInfo}" Foreground="#93c5fd"/>
+          </StackPanel>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+          <Border Background="Transparent" Padding="8" HorizontalAlignment="Center">
+            <Image Source="{Binding CurrentPageImage}"
+                   Width="{Binding ZoomWidth}"
+                   Stretch="Fill"/>
+          </Border>
+        </ScrollViewer>
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

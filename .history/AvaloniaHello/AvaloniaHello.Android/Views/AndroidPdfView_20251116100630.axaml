@@ -1,0 +1,130 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaHello.ViewModels"
+             xmlns:controls="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
+             mc:Ignorable="d"
+             x:Class="AvaloniaHello.Views.AndroidPdfView"
+             x:Name="PdfRoot"
+             x:DataType="vm:AndroidPdfViewModel"
+             d:DesignWidth="1280" d:DesignHeight="768">
+  <Grid RowDefinitions="Auto,*">
+    <Border Background="#111827" Padding="16,12" Height="64">
+      <Grid ColumnDefinitions="Auto,*,Auto" VerticalAlignment="Center">
+        <Button Content="← Back"
+                Command="{Binding BackCommand}"
+                Height="38"
+                Padding="20,0"
+                Background="#374151"
+                Foreground="White"
+                FontWeight="SemiBold"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="16">
+          <TextBlock Text="GDL90 Viewer" Foreground="#f9fafb" FontSize="20" FontWeight="SemiBold"/>
+          <TextBlock Text="{Binding PageCount, StringFormat='Pages: {0}'}" Foreground="#cbd5f5"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+          <ToggleButton Content="[#]"
+                        Width="42"
+                        IsChecked="{Binding IsThumbnailMode, Mode=TwoWay}"
+                        ToolTip.Tip="Toggle thumbnails"
+                        Background="#1f2937"
+                        Foreground="#e5e7eb"/>
+            <Button Content="◀"
+                    Width="42"
+                    Command="{Binding PreviousPageCommand}"
+                    Background="#f8fafc"
+                    Foreground="#0f172a"/>
+          <TextBlock Text="{Binding DisplayPageNumber, StringFormat='Page {0}'}"
+                     Foreground="#e5e7eb"
+                     VerticalAlignment="Center"/>
+            <Button Content="▶"
+                    Width="42"
+                    Command="{Binding NextPageCommand}"
+                    Background="#f8fafc"
+                    Foreground="#0f172a"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Border Grid.Row="1" Background="#0b1522" Padding="16">
+      <Grid RowDefinitions="Auto,*">
+        <StackPanel Orientation="Vertical" Spacing="8">
+          <TextBlock Text="{Binding ErrorMessage}" Foreground="#fca5a5" IsVisible="{Binding HasError}"/>
+          <ProgressBar IsIndeterminate="True" Height="4" IsVisible="{Binding IsBusy}"/>
+          <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+            <TextBlock Text="Zoom" Foreground="#e5e7eb"/>
+            <Slider Minimum="0.75" Maximum="2.5" Width="180" Value="{Binding Zoom, Mode=TwoWay}"/>
+            <TextBlock Text="{Binding ImageInfo}" Foreground="#93c5fd"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="12" IsVisible="{Binding IsThumbnailMode}">
+            <ProgressBar IsIndeterminate="True"
+                         Width="160"
+                         Height="4"
+                         IsVisible="{Binding IsLoadingThumbnails}"/>
+            <TextBlock Text="Preparing thumbnails..."
+                       Foreground="#cbd5f5"
+                       IsVisible="{Binding IsLoadingThumbnails}"/>
+            <TextBlock Text="No thumbnails ready"
+                       Foreground="#fcd34d"
+                       IsVisible="{Binding HasNoThumbnails}"/>
+          </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="1">
+          <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Auto"
+                        Background="#111827"
+                        IsVisible="{Binding IsSinglePageMode}">
+            <Border Background="#f8fafc"
+                    Padding="24"
+                    HorizontalAlignment="Center"
+                    CornerRadius="12">
+              <Image Source="{Binding CurrentPageImage}"
+                     Width="{Binding ZoomWidth}"
+                     Stretch="Uniform"
+                     RenderOptions.BitmapInterpolationMode="HighQuality"/>
+            </Border>
+          </ScrollViewer>
+
+          <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Auto"
+                        Background="#111827"
+                        IsVisible="{Binding IsThumbnailMode}">
+            <ItemsControl ItemsSource="{Binding PageThumbnails}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <controls:WrapPanel HorizontalAlignment="Center" MinWidth="400" ItemWidth="220" ItemHeight="Auto"/>
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Button Command="{Binding DataContext.SelectPageCommand, Source={x:Reference PdfRoot}}"
+                          CommandParameter="{Binding PageIndex}"
+                          Margin="8"
+                          Padding="8"
+                          Background="#1f2937"
+                          BorderBrush="#4b5563"
+                          BorderThickness="1"
+                          HorizontalContentAlignment="Stretch">
+                    <StackPanel Spacing="6">
+                      <Border Background="#f8fafc" CornerRadius="8" Padding="8">
+                        <Image Source="{Binding Image}"
+                               Width="180"
+                               Stretch="Uniform"
+                               RenderOptions.BitmapInterpolationMode="HighQuality"/>
+                      </Border>
+                      <TextBlock Text="{Binding DisplayNumber, StringFormat='Page {0}'}"
+                                 HorizontalAlignment="Center"
+                                 Foreground="#e5e7eb"
+                                 FontSize="14"/>
+                    </StackPanel>
+                  </Button>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+        </Grid>
+      </Grid>
+    </Border>
+  </Grid>
+</UserControl>

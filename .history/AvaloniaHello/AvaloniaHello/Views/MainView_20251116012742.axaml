@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaHello.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaHello.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <UserControl.Background>
+    <SolidColorBrush Color="#0b1522"/>
+  </UserControl.Background>
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+    <Border Padding="32" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,48,0,24"
+      Background="#1f2933" CornerRadius="24">
+    <StackPanel Spacing="16" Width="360">
+      <Button Content="Open GDL90 PDF" Command="{Binding OpenPdfCommand}" Height="48" CornerRadius="12"
+              Background="#2563eb" Foreground="White" FontWeight="SemiBold" />
+      <TextBox Text="{Binding UserMessage, Mode=TwoWay}" Watermark="Tap anywhere to type"
+           FontSize="18" MinHeight="56" Padding="12" CornerRadius="12"
+           Background="#d1d5db" Foreground="#111827"/>
+      <StackPanel Spacing="4">
+        <TextBlock Text="{Binding Greeting}" FontSize="26" FontWeight="SemiBold" Foreground="White"/>
+        <TextBlock TextWrapping="Wrap" Foreground="#cbd5f5" TextAlignment="Left"
+                   Text="One codebase, polished across Windows, macOS, Linux, iOS, Android, and Browser."/>
+      </StackPanel>
+      <Border Background="#2b3647" CornerRadius="12" Padding="12">
+        <StackPanel Spacing="6">
+          <TextBlock Text="Live preview" FontWeight="Bold" Foreground="#b3d4ff"/>
+          <TextBlock Text="{Binding UserMessage}" TextWrapping="Wrap" Foreground="White"/>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </Border>
+</UserControl>

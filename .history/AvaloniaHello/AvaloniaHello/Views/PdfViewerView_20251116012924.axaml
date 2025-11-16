@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaHello.ViewModels"
+             xmlns:mupdf="clr-namespace:MuPDFCore.MuPDFRenderer;assembly=MuPDFCore.MuPDFRenderer"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="768"
+             x:Class="AvaloniaHello.Views.PdfViewerView"
+             x:DataType="vm:PdfViewerViewModel">
+  <Grid RowDefinitions="Auto,*" ColumnDefinitions="280,*">
+    <Border Grid.ColumnSpan="2" Background="#111827" Padding="16,12" Height="64">
+      <Grid ColumnDefinitions="Auto,*,Auto" VerticalAlignment="Center">
+        <Button Content="← Back" Command="{Binding BackCommand}" Height="38" Padding="20,0"
+                Background="#374151" Foreground="White" FontWeight="SemiBold"/>
+        <TextBlock Grid.Column="1" Text="GDL90 Viewer" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="20" FontWeight="SemiBold" Foreground="#f9fafb"/>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+          <ProgressBar Width="140" Height="6" IsIndeterminate="{Binding IsBusy}" Minimum="0" Maximum="1"
+                       Visibility="{Binding IsBusy, Converter={x:Static BooleanToVisibilityConverter.Instance}}"/>
+          <TextBlock Text="{Binding PageCount, StringFormat='Pages: {0}'}" Foreground="#cbd5f5"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+    <Border Grid.Row="1" Background="#0f172a" Padding="12" Margin="0,0,8,0">
+      <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <ListBox Items="{Binding Thumbnails}" SelectedIndex="{Binding ActivePageIndex}"
+                 BorderThickness="0" Background="Transparent">
+          <ListBox.ItemTemplate>
+            <DataTemplate x:DataType="vm:PdfViewerViewModel.PageThumbnail">
+              <StackPanel Spacing="8" Margin="0,0,0,16">
+                <Border CornerRadius="8" Background="#1f2937" Padding="4">
+                  <Image Source="{Binding Image}" Stretch="Uniform" MaxWidth="220" />
+                </Border>
+                <TextBlock Text="{Binding Title}" Foreground="#e5e7eb" FontSize="14"/>
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </ScrollViewer>
+    </Border>
+
+    <Border Grid.Row="1" Grid.Column="1" Background="#0b1522" Margin="8,0,0,0">
+      <mupdf:PDFRenderer x:Name="PdfRenderer" Background="#111827" />
+    </Border>
+  </Grid>
+</UserControl>

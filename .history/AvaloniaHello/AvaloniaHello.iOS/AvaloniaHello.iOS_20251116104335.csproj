@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-ios</TargetFramework>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.iOS" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AvaloniaHello\AvaloniaHello.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BundleResource Include="..\AvaloniaHello\AvaloniaHello\Assets\docs\GDL90_Public_ICD_RevA.PDF">
+      <Link>Assets/docs/GDL90_Public_ICD_RevA.PDF</Link>
+    </BundleResource>
+  </ItemGroup>
+</Project>

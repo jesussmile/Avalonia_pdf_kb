@@ -1,0 +1,14 @@
+# Suggested commands
+- Verify toolchain: `dotnet --version`
+- Install/update Avalonia templates: `dotnet new install Avalonia.Templates`
+- Restore + build everything (run inside repo root):
+  - `cd AvaloniaHello`
+  - `dotnet restore`
+  - `dotnet build`
+- Desktop run loop: `dotnet run --project AvaloniaHello.Desktop`
+- Browser publish (requires `wasm-tools` workload once): `dotnet publish AvaloniaHello.Browser -c Release`
+- Android deployment (device/emulator must be ready): `dotnet build AvaloniaHello.Android -t:Run -f net8.0-android`
+- iOS simulator deployment: `dotnet build AvaloniaHello.iOS -t:Run -f net8.0-ios /p:_DeviceName=:v2:udid=<sim-udid>`
+- Install workloads as needed: `dotnet workload install wasm-tools android ios maccatalyst`
+- Typical git workflow: `git status`, `git add <paths>`, `git commit -m "message"`
+- macOS utilities: `ls`, `pwd`, `open .`, `which dotnet`
