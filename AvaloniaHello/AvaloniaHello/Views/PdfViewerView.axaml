@@ -17,7 +17,25 @@
         <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
           <ProgressBar Width="140" Height="6" IsIndeterminate="{Binding IsBusy}" Minimum="0" Maximum="1"
                        IsVisible="{Binding IsBusy}"/>
-          <TextBlock Text="{Binding PageCount, StringFormat='Pages: {0}'}" Foreground="#cbd5f5"/>
+          <Button Content="◀"
+                  Command="{Binding PreviousPageCommand}"
+                  Width="42"
+                  Height="36"
+                  Background="#1f2937"
+                  Foreground="#f9fafb"
+                  BorderBrush="#374151"
+                  BorderThickness="1"
+                  CornerRadius="8"/>
+          <TextBlock Text="{Binding PageDisplay}" Foreground="#cbd5f5" FontWeight="SemiBold" VerticalAlignment="Center"/>
+          <Button Content="▶"
+                  Command="{Binding NextPageCommand}"
+                  Width="42"
+                  Height="36"
+                  Background="#1f2937"
+                  Foreground="#f9fafb"
+                  BorderBrush="#374151"
+                  BorderThickness="1"
+                  CornerRadius="8"/>
         </StackPanel>
       </Grid>
     </Border>

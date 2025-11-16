@@ -23,6 +23,8 @@ public partial class PdfViewerViewModel : ViewModelBase, IDisposable, IPdfDocume
     private MuPDFDocument? _document;
     private PDFRenderer? _renderer;
     private bool _disposed;
+    private readonly RelayCommand _nextPageCommandCore;
+    private readonly RelayCommand _previousPageCommandCore;
 
     public PdfViewerViewModel(string documentPath, Action? navigateBack)
     {
@@ -33,6 +35,8 @@ public partial class PdfViewerViewModel : ViewModelBase, IDisposable, IPdfDocume
   _documentPath = documentPath;
       _navigateBack = navigateBack;
    BackCommand = new RelayCommand(() => _navigateBack?.Invoke());
+    _nextPageCommandCore = new RelayCommand(GoToNextPage, () => CanMoveTo(ActivePageIndex + 1));
+    _previousPageCommandCore = new RelayCommand(GoToPreviousPage, () => CanMoveTo(ActivePageIndex - 1));
     }
 
     public ObservableCollection<PageThumbnail> Thumbnails { get; } = new();
@@ -53,7 +57,27 @@ public partial class PdfViewerViewModel : ViewModelBase, IDisposable, IPdfDocume
 
     public IRelayCommand BackCommand { get; }
 
+    public IRelayCommand NextPageCommand => _nextPageCommandCore;
+
+    public IRelayCommand PreviousPageCommand => _previousPageCommandCore;
+
     public int PageCount => _document?.Pages.Length ?? 0;
+
+    public string PageDisplay
+    {
+      get
+      {
+        var current = ActivePageIndex + 1;
+        var total = Math.Max(PageCount, 0);
+        if (total <= 0)
+        {
+          return "Page 0 / 0";
+        }
+
+        current = Math.Clamp(current, 1, total);
+        return $"Page {current} / {total}";
+      }
+    }
 
   public void Activate()
     {
@@ -99,6 +123,8 @@ else
         ErrorMessage = null;
 
   OnPropertyChanged(nameof(PageCount));
+    OnPropertyChanged(nameof(PageDisplay));
+    NotifyNavigationState();
 
   var loadTask = GenerateThumbnailsAsync();
      _ = loadTask.ContinueWith(t =>
@@ -142,6 +168,7 @@ else
   try
         {
   var threadCount = Math.Max(1, Environment.ProcessorCount - 1);
+       ConfigureRendererAppearance(renderer);
        Console.WriteLine($"Initializing renderer with {threadCount} threads, starting at page {ActivePageIndex}");
       
       renderer.Initialize(_document, threadCount, ActivePageIndex, 1.0, includeAnnotations: true, ocrLanguage: null);
@@ -206,6 +233,7 @@ var thumbnail = CreateThumbnail(pageIndex);
           {
        Console.WriteLine("Setting ActivePageIndex to 0");
      ActivePageIndex = 0;
+    NotifyNavigationState();
       }
         }
         finally
@@ -258,53 +286,100 @@ var thumbnail = CreateThumbnail(pageIndex);
         }
 }
 
-    partial void OnActivePageIndexChanged(int value)
+    private static void ConfigureRendererAppearance(PDFRenderer? renderer)
     {
-        Console.WriteLine($"=== ActivePageIndex changed to {value} ===");
-     
-        if (_renderer is null || _document is null)
+        if (renderer is null)
         {
-  var rendererStatus = _renderer != null ? "OK" : "null";
-            var documentStatus = _document != null ? "OK" : "null";
-       Console.WriteLine($"WARNING: Cannot change page - Renderer: {rendererStatus}, Document: {documentStatus}");
-    return;
-     }
-
-        try
-        {
-     var targetPage = Math.Clamp(value, 0, Math.Max(0, PageCount - 1));
-  Console.WriteLine($"Switching to page {targetPage}");
-        
-      var threadCount = Math.Max(1, Environment.ProcessorCount - 1);
-       _renderer.Initialize(_document, threadCount, targetPage, 1.0, includeAnnotations: true, ocrLanguage: null);
-  _renderer.Cover();
-Console.WriteLine($"Successfully switched to page {targetPage}");
-        }
-        catch (Exception ex)
-      {
-            Console.WriteLine($"ERROR in OnActivePageIndexChanged: {ex.Message}");
-Console.WriteLine($"Stack trace: {ex.StackTrace}");
-        }
-    }
-
-  public void Dispose()
-    {
-        if (_disposed)
- {
             return;
         }
 
-  Console.WriteLine("=== PdfViewerViewModel.Dispose() ===");
-        _disposed = true;
+        renderer.Background = Avalonia.Media.Brushes.Transparent;
+        renderer.PageBackground = Avalonia.Media.Brushes.White;
+        renderer.DrawLinks = false;
+        renderer.ActivateLinks = false;
+        renderer.HighlightBrush = Avalonia.Media.Brushes.Transparent;
+        renderer.SelectionBrush = Avalonia.Media.Brushes.Transparent;
+        renderer.LinkBrush = Avalonia.Media.Brushes.Transparent;
+        renderer.LinkPen = null;
+    }
+
+    partial void OnActivePageIndexChanged(int value)
+    {
+      Console.WriteLine($"=== ActivePageIndex changed to {value} ===");
+      NotifyNavigationState();
+
+      if (_renderer is null || _document is null)
+      {
+        var rendererStatus = _renderer is not null ? "OK" : "null";
+        var documentStatus = _document is not null ? "OK" : "null";
+        Console.WriteLine($"WARNING: Cannot change page - Renderer: {rendererStatus}, Document: {documentStatus}");
+        return;
+      }
+
+      try
+      {
+        var targetPage = Math.Clamp(value, 0, Math.Max(0, PageCount - 1));
+        Console.WriteLine($"Switching to page {targetPage}");
+
+        var threadCount = Math.Max(1, Environment.ProcessorCount - 1);
+        ConfigureRendererAppearance(_renderer);
+        _renderer.Initialize(_document, threadCount, targetPage, 1.0, includeAnnotations: true, ocrLanguage: null);
+        _renderer.Cover();
+        Console.WriteLine($"Successfully switched to page {targetPage}");
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine($"ERROR in OnActivePageIndexChanged: {ex.Message}");
+        Console.WriteLine($"Stack trace: {ex.StackTrace}");
+      }
+    }
+
+    public void Dispose()
+    {
+      if (_disposed)
+      {
+        return;
+      }
+
+      Console.WriteLine("=== PdfViewerViewModel.Dispose() ===");
+      _disposed = true;
       _renderer?.ReleaseResources();
-        _renderer = null;
-        _document?.Dispose();
-        _context?.Dispose();
-  Console.WriteLine("PdfViewerViewModel: Disposed resources");
+      _renderer = null;
+      _document?.Dispose();
+      _context?.Dispose();
+      Console.WriteLine("PdfViewerViewModel: Disposed resources");
+    }
+
+    private void GoToNextPage()
+    {
+      if (CanMoveTo(ActivePageIndex + 1))
+      {
+        ActivePageIndex += 1;
+      }
+    }
+
+    private void GoToPreviousPage()
+    {
+      if (CanMoveTo(ActivePageIndex - 1))
+      {
+        ActivePageIndex -= 1;
+      }
+    }
+
+    private bool CanMoveTo(int index)
+    {
+      return index >= 0 && index < PageCount;
+    }
+
+    private void NotifyNavigationState()
+    {
+      OnPropertyChanged(nameof(PageDisplay));
+      _nextPageCommandCore.NotifyCanExecuteChanged();
+      _previousPageCommandCore.NotifyCanExecuteChanged();
     }
 
     public record PageThumbnail(int PageNumber, Bitmap Image)
     {
- public string Title => $"Page {PageNumber + 1}";
+      public string Title => $"Page {PageNumber + 1}";
     }
-}
+  }
