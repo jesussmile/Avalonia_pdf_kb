@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaHello.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaHello.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  <Border Padding="32" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,48,0,24"
+          Background="#0f172a" CornerRadius="24">
+    <StackPanel Spacing="16" Width="360">
+      <TextBox Text="{Binding UserMessage, Mode=TwoWay}" Watermark="Tap anywhere to type"
+               FontSize="18" MinHeight="56" Padding="12" CornerRadius="12"
+               Background="#ffffff" Foreground="#0f172a"/>
+      <StackPanel Spacing="4">
+        <TextBlock Text="{Binding Greeting}" FontSize="26" FontWeight="SemiBold" Foreground="White"/>
+        <TextBlock TextWrapping="Wrap" Foreground="#cbd5f5" TextAlignment="Left"
+                   Text="One codebase, polished across Windows, macOS, Linux, iOS, Android, and Browser."/>
+      </StackPanel>
+      <Border Background="#1d253f" CornerRadius="12" Padding="12">
+        <StackPanel Spacing="6">
+          <TextBlock Text="Live preview" FontWeight="Bold" Foreground="#b3d4ff"/>
+          <TextBlock Text="{Binding UserMessage}" TextWrapping="Wrap" Foreground="White"/>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </Border>
+</UserControl>

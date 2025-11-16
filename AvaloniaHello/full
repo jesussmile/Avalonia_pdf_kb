@@ -1,0 +1,1128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MTouch Version="0" Revision="0">
+  <SdkRoot>/Applications/Xcode.app/Contents/Developer</SdkRoot>
+  <Simulator>
+    <SupportedRuntimes Count="3">
+      <SimRuntime>
+        <Name>iOS 18.0</Name>
+        <Identifier>com.apple.CoreSimulator.SimRuntime.iOS-18-0</Identifier>
+        <Version>1179648</Version>
+      </SimRuntime>
+      <SimRuntime>
+        <Name>iOS 18.3</Name>
+        <Identifier>com.apple.CoreSimulator.SimRuntime.iOS-18-3</Identifier>
+        <Version>1180417</Version>
+      </SimRuntime>
+      <SimRuntime>
+        <Name>iOS 18.5</Name>
+        <Identifier>com.apple.CoreSimulator.SimRuntime.iOS-18-5</Identifier>
+        <Version>1180928</Version>
+      </SimRuntime>
+    </SupportedRuntimes>
+    <SupportedDeviceTypes Count="106">
+      <SimDeviceType>
+        <Name>iPhone 16 Pro</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1179648</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 16 Pro Max</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro-Max</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1179648</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 16e</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-16e</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1180416</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 16</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-16</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1179648</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 16 Plus</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Plus</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1179648</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 15 Pro</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-15-Pro</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1114112</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 15 Pro Max</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-15-Pro-Max</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1114112</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 15</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-15</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1114112</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 15 Plus</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-15-Plus</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1114112</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 14 Pro</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-14-Pro</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1048576</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 14 Pro Max</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-14-Pro-Max</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1048576</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 14</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-14</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1048576</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 14 Plus</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-14-Plus</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>1048576</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone SE (3rd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>984064</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 13 Pro</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>983040</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 13 Pro Max</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-13-Pro-Max</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>983040</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 13</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-13</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>983040</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 13 mini</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-13-mini</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>983040</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 12 Pro</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-12-Pro</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>917760</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 12 Pro Max</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-12-Pro-Max</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>917760</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 12</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-12</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>917760</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 12 mini</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-12-mini</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>917760</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone SE (2nd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-SE--2nd-generation-</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>852993</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 11 Pro</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>851968</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 11 Pro Max</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro-Max</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>851968</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 11</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-11</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>851968</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone Xʀ</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-XR</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>786432</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone Xs</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-XS</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>786432</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone Xs Max</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-XS-Max</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>786432</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone X</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-X</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>720896</MinRuntimeVersion>
+        <MaxRuntimeVersion>1050880</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 8</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-8</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>720896</MinRuntimeVersion>
+        <MaxRuntimeVersion>1050880</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 8 Plus</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-8-Plus</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>720896</MinRuntimeVersion>
+        <MaxRuntimeVersion>1050880</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 7</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-7</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>655360</MinRuntimeVersion>
+        <MaxRuntimeVersion>1048575</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 7 Plus</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-7-Plus</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>655360</MinRuntimeVersion>
+        <MaxRuntimeVersion>1048575</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone SE (1st generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-SE</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>590592</MinRuntimeVersion>
+        <MaxRuntimeVersion>1048575</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 6s</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-6s</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>1048575</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPhone 6s Plus</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPhone-6s-Plus</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>1048575</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro 11-inch (M4) (16GB)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-M4-16GB</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1115136</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro 11-inch (M4)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-M4-8GB</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1115136</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro 13-inch (M4) (16GB)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-13-inch-M4-16GB</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1115136</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro 13-inch (M4)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-13-inch-M4-8GB</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1115136</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad (A16)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-A16</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1180416</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Air 13-inch (M3)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Air-13-inch-M3</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1180416</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Air 11-inch (M3)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Air-11-inch-M3</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1180416</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Air 11-inch (M2)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Air-11-inch-M2</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1115136</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Air 13-inch (M2)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Air-13-inch-M2</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1115136</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad mini (A17 Pro)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-mini-A17-Pro</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1179904</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (11-inch) (4th generation) (16GB)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-4th-generation-16GB</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1048832</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (11-inch) (4th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-4th-generation-8GB</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1048832</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (12.9-inch) (6th generation) (16GB)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-6th-generation-16GB</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1048832</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (12.9-inch) (6th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-6th-generation-8GB</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1048832</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad (10th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-10th-generation</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>1048832</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Air (5th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Air-5th-generation</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>984064</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad mini (6th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-mini-6th-generation</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>983040</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (11-inch) (3rd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-3rd-generation</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>918784</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (12.9-inch) (5th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-12-9-inch-5th-generation</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>918784</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad (9th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-9th-generation</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>983040</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Air (4th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Air--4th-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>786944</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad (8th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad--8th-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>851968</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Air (3rd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Air--3rd-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>786944</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad mini (5th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-mini--5th-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>786944</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (11-inch) (2nd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro--11-inch---2nd-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>852992</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (12.9-inch) (4th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---4th-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>852992</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (11-inch) (1st generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro--11-inch-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>786432</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (12.9-inch) (3rd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---3rd-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>786432</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad (7th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad--7th-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>851968</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (10.5-inch)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro--10-5-inch-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>656128</MinRuntimeVersion>
+        <MaxRuntimeVersion>1139456</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (12.9-inch) (2nd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>656128</MinRuntimeVersion>
+        <MaxRuntimeVersion>1139456</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad (6th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad--6th-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>721664</MinRuntimeVersion>
+        <MaxRuntimeVersion>1139456</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (9.7-inch)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro--9-7-inch-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>655360</MinRuntimeVersion>
+        <MaxRuntimeVersion>1050880</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Pro (12.9-inch) (1st generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Pro</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>590080</MinRuntimeVersion>
+        <MaxRuntimeVersion>1050880</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad (5th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad--5th-generation-</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>656128</MinRuntimeVersion>
+        <MaxRuntimeVersion>1050880</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad Air 2</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-Air-2</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>524288</MinRuntimeVersion>
+        <MaxRuntimeVersion>1048575</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPad mini 4</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPad-mini-4</Identifier>
+        <ProductFamilyId>IPad</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>1048575</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple TV 4K (3rd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-3rd-generation-4K</Identifier>
+        <ProductFamilyId>TV</ProductFamilyId>
+        <MinRuntimeVersion>1048832</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple TV 4K (3rd generation) (at 1080p)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-3rd-generation-1080p</Identifier>
+        <ProductFamilyId>TV</ProductFamilyId>
+        <MinRuntimeVersion>1048832</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple TV 4K (2nd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-2nd-generation-4K</Identifier>
+        <ProductFamilyId>TV</ProductFamilyId>
+        <MinRuntimeVersion>918784</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple TV 4K (2nd generation) (at 1080p)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-2nd-generation-1080p</Identifier>
+        <ProductFamilyId>TV</ProductFamilyId>
+        <MinRuntimeVersion>918784</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple TV 4K</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-4K</Identifier>
+        <ProductFamilyId>TV</ProductFamilyId>
+        <MinRuntimeVersion>720896</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple TV 4K (at 1080p)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-TV-4K-1080p</Identifier>
+        <ProductFamilyId>TV</ProductFamilyId>
+        <MinRuntimeVersion>720896</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple TV</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-TV-1080p</Identifier>
+        <ProductFamilyId>TV</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 10 (46mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-10-46mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>720896</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 10 (42mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-10-42mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>720896</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 9 (45mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-9-45mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>655360</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 9 (41mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-9-41mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>655360</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Ultra 2 (49mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Ultra-2-49mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>655360</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 8 (45mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-8-45mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 8 (41mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-8-41mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Ultra (49mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Ultra-49mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch SE (44mm) (2nd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-SE-44mm-2nd-generation</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch SE (40mm) (2nd generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-SE-40mm-2nd-generation</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>589824</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 7 (45mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-7-45mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>524288</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 7 (41mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-7-41mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>524288</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 6 (44mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-6-44mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>393216</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 6 (40mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-6-40mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>393216</MinRuntimeVersion>
+        <MaxRuntimeVersion>4294967295</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch SE (44mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-SE-44mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>458752</MinRuntimeVersion>
+        <MaxRuntimeVersion>680704</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch SE (40mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-SE-40mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>458752</MinRuntimeVersion>
+        <MaxRuntimeVersion>680704</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 5 (44mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-5-44mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>393216</MinRuntimeVersion>
+        <MaxRuntimeVersion>680704</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 5 (40mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-5-40mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>393216</MinRuntimeVersion>
+        <MaxRuntimeVersion>680704</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 4 (44mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-4-44mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>327680</MinRuntimeVersion>
+        <MaxRuntimeVersion>680704</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 4 (40mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-4-40mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>327680</MinRuntimeVersion>
+        <MaxRuntimeVersion>680704</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 3 (42mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-42mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>262144</MinRuntimeVersion>
+        <MaxRuntimeVersion>589823</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 3 (38mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-3-38mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>262144</MinRuntimeVersion>
+        <MaxRuntimeVersion>589823</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 2 (42mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-42mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>196608</MinRuntimeVersion>
+        <MaxRuntimeVersion>458751</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>Apple Watch Series 2 (38mm)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.Apple-Watch-Series-2-38mm</Identifier>
+        <ProductFamilyId>Watch</ProductFamilyId>
+        <MinRuntimeVersion>196608</MinRuntimeVersion>
+        <MaxRuntimeVersion>458751</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+      <SimDeviceType>
+        <Name>iPod touch (7th generation)</Name>
+        <Identifier>com.apple.CoreSimulator.SimDeviceType.iPod-touch--7th-generation-</Identifier>
+        <ProductFamilyId>IPhone</ProductFamilyId>
+        <MinRuntimeVersion>787201</MinRuntimeVersion>
+        <MaxRuntimeVersion>1048575</MaxRuntimeVersion>
+        <Supports64Bits>true</Supports64Bits>
+      </SimDeviceType>
+    </SupportedDeviceTypes>
+    <AvailableDevices Count="42">
+      <SimDevice UDID="791AB4A8-C31A-4541-9074-EB35206140DA" Name="iPhone 16 Pro" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/791AB4A8-C31A-4541-9074-EB35206140DA</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/791AB4A8-C31A-4541-9074-EB35206140DA</LogPath>
+      </SimDevice>
+      <SimDevice UDID="BD4A0182-1BEB-43D3-904B-628573087011" Name="iPhone 16 Pro Max" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro-Max</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/BD4A0182-1BEB-43D3-904B-628573087011</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/BD4A0182-1BEB-43D3-904B-628573087011</LogPath>
+      </SimDevice>
+      <SimDevice UDID="FB9B8DB3-F979-4871-9327-BE56B652EBBC" Name="iPhone 16" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/FB9B8DB3-F979-4871-9327-BE56B652EBBC</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/FB9B8DB3-F979-4871-9327-BE56B652EBBC</LogPath>
+      </SimDevice>
+      <SimDevice UDID="6131CC46-426F-4300-B923-C1B8B9C2902E" Name="iPhone 16 Plus" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Plus</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/6131CC46-426F-4300-B923-C1B8B9C2902E</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/6131CC46-426F-4300-B923-C1B8B9C2902E</LogPath>
+      </SimDevice>
+      <SimDevice UDID="6BF75422-C11D-4428-AA54-5C7AB277928D" Name="iPhone 15 Pro" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-15-Pro</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/6BF75422-C11D-4428-AA54-5C7AB277928D</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/6BF75422-C11D-4428-AA54-5C7AB277928D</LogPath>
+      </SimDevice>
+      <SimDevice UDID="0B2AA43C-CB7A-4F97-A82B-A633FF95D430" Name="iPhone 15 Pro Max" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-15-Pro-Max</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/0B2AA43C-CB7A-4F97-A82B-A633FF95D430</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/0B2AA43C-CB7A-4F97-A82B-A633FF95D430</LogPath>
+      </SimDevice>
+      <SimDevice UDID="581F95D3-0F7C-4827-B0F1-3415C106BE5A" Name="iPhone 15" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-15</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/581F95D3-0F7C-4827-B0F1-3415C106BE5A</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/581F95D3-0F7C-4827-B0F1-3415C106BE5A</LogPath>
+      </SimDevice>
+      <SimDevice UDID="FB47BB7F-3DAF-4C5E-B63A-FB456E1DA158" Name="iPhone 15 Plus" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-15-Plus</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/FB47BB7F-3DAF-4C5E-B63A-FB456E1DA158</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/FB47BB7F-3DAF-4C5E-B63A-FB456E1DA158</LogPath>
+      </SimDevice>
+      <SimDevice UDID="C6F37950-543D-42FE-8C14-A9D320164A89" Name="iPhone SE (3rd generation)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/C6F37950-543D-42FE-8C14-A9D320164A89</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/C6F37950-543D-42FE-8C14-A9D320164A89</LogPath>
+      </SimDevice>
+      <SimDevice UDID="41A346A8-BC3E-41E6-8EF2-BB8503FA270D" Name="iPad Pro 11-inch (M4)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-M4-8GB</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/41A346A8-BC3E-41E6-8EF2-BB8503FA270D</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/41A346A8-BC3E-41E6-8EF2-BB8503FA270D</LogPath>
+      </SimDevice>
+      <SimDevice UDID="3CBEFDCF-B6F0-419B-817A-E623C6FA51DB" Name="iPad Pro 13-inch (M4)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-13-inch-M4-8GB</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/3CBEFDCF-B6F0-419B-817A-E623C6FA51DB</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/3CBEFDCF-B6F0-419B-817A-E623C6FA51DB</LogPath>
+      </SimDevice>
+      <SimDevice UDID="3CEED0ED-62A5-4C3E-AAF6-58450F967F4C" Name="iPad Air 11-inch (M2)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Air-11-inch-M2</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/3CEED0ED-62A5-4C3E-AAF6-58450F967F4C</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/3CEED0ED-62A5-4C3E-AAF6-58450F967F4C</LogPath>
+      </SimDevice>
+      <SimDevice UDID="56CBC100-896F-49D4-B330-23FEECF837EF" Name="iPad Air 13-inch (M2)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Air-13-inch-M2</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/56CBC100-896F-49D4-B330-23FEECF837EF</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/56CBC100-896F-49D4-B330-23FEECF837EF</LogPath>
+      </SimDevice>
+      <SimDevice UDID="67B28D77-9397-4C71-8AE8-5372286703C6" Name="iPad (10th generation)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-10th-generation</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/67B28D77-9397-4C71-8AE8-5372286703C6</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/67B28D77-9397-4C71-8AE8-5372286703C6</LogPath>
+      </SimDevice>
+      <SimDevice UDID="4EF4B55D-2428-4BC4-83C2-1AE806E59B2E" Name="iPad mini (6th generation)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-0</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-mini-6th-generation</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/4EF4B55D-2428-4BC4-83C2-1AE806E59B2E</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/4EF4B55D-2428-4BC4-83C2-1AE806E59B2E</LogPath>
+      </SimDevice>
+      <SimDevice UDID="4D044FD3-B00C-4C1A-8E8B-C2D622171E5F" Name="iPhone 16 Pro" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/4D044FD3-B00C-4C1A-8E8B-C2D622171E5F</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/4D044FD3-B00C-4C1A-8E8B-C2D622171E5F</LogPath>
+      </SimDevice>
+      <SimDevice UDID="3BBC3700-C259-41C7-A5F8-CE80BEE8B835" Name="iPhone 16 Pro Max" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro-Max</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/3BBC3700-C259-41C7-A5F8-CE80BEE8B835</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/3BBC3700-C259-41C7-A5F8-CE80BEE8B835</LogPath>
+      </SimDevice>
+      <SimDevice UDID="5CE8F7AA-1A34-4FD1-B19E-EAB81B55B15D" Name="iPhone 16e" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16e</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/5CE8F7AA-1A34-4FD1-B19E-EAB81B55B15D</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/5CE8F7AA-1A34-4FD1-B19E-EAB81B55B15D</LogPath>
+      </SimDevice>
+      <SimDevice UDID="93DACE5E-C5DE-4426-8F90-7AE5E09B1418" Name="iPhone 16" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/93DACE5E-C5DE-4426-8F90-7AE5E09B1418</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/93DACE5E-C5DE-4426-8F90-7AE5E09B1418</LogPath>
+      </SimDevice>
+      <SimDevice UDID="08A03719-F950-4A5B-9081-9994D2EFB43E" Name="iPhone 16 Plus" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Plus</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/08A03719-F950-4A5B-9081-9994D2EFB43E</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/08A03719-F950-4A5B-9081-9994D2EFB43E</LogPath>
+      </SimDevice>
+      <SimDevice UDID="5DC86178-8C28-4ADE-8A3C-D06B0AEB1C4F" Name="iPhone SE (3rd generation)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/5DC86178-8C28-4ADE-8A3C-D06B0AEB1C4F</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/5DC86178-8C28-4ADE-8A3C-D06B0AEB1C4F</LogPath>
+      </SimDevice>
+      <SimDevice UDID="82285685-8BFB-486B-A02E-482E58F070EE" Name="iPad Pro 11-inch (M4)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-M4-8GB</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/82285685-8BFB-486B-A02E-482E58F070EE</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/82285685-8BFB-486B-A02E-482E58F070EE</LogPath>
+      </SimDevice>
+      <SimDevice UDID="0854702C-5600-412B-A35B-669DFE61EAD6" Name="iPad Pro 13-inch (M4)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-13-inch-M4-8GB</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/0854702C-5600-412B-A35B-669DFE61EAD6</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/0854702C-5600-412B-A35B-669DFE61EAD6</LogPath>
+      </SimDevice>
+      <SimDevice UDID="E774C4EE-9EA7-4BB5-AA5A-C1FF8537A981" Name="iPad mini (A17 Pro)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-mini-A17-Pro</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/E774C4EE-9EA7-4BB5-AA5A-C1FF8537A981</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/E774C4EE-9EA7-4BB5-AA5A-C1FF8537A981</LogPath>
+      </SimDevice>
+      <SimDevice UDID="0E8A9C13-05F7-4DF6-B272-CB491063FA71" Name="iPad (A16)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-A16</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/0E8A9C13-05F7-4DF6-B272-CB491063FA71</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/0E8A9C13-05F7-4DF6-B272-CB491063FA71</LogPath>
+      </SimDevice>
+      <SimDevice UDID="9E907AB9-406E-4B7E-8500-7B7397D8CA29" Name="iPad Air 13-inch (M3)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Air-13-inch-M3</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/9E907AB9-406E-4B7E-8500-7B7397D8CA29</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/9E907AB9-406E-4B7E-8500-7B7397D8CA29</LogPath>
+      </SimDevice>
+      <SimDevice UDID="CAFA6445-1B9B-42F2-B94A-F633A4C106CC" Name="iPad Air 11-inch (M3)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Air-11-inch-M3</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/CAFA6445-1B9B-42F2-B94A-F633A4C106CC</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/CAFA6445-1B9B-42F2-B94A-F633A4C106CC</LogPath>
+      </SimDevice>
+      <SimDevice UDID="D123472D-4B7B-4FCA-A183-8A7B2F5C5255" Name="iPad Air 11-inch (M2)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Air-11-inch-M2</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/D123472D-4B7B-4FCA-A183-8A7B2F5C5255</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/D123472D-4B7B-4FCA-A183-8A7B2F5C5255</LogPath>
+      </SimDevice>
+      <SimDevice UDID="81B48DE6-FAD3-46FA-BCF9-8CA27E97FC24" Name="iPad Air 13-inch (M2)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Air-13-inch-M2</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/81B48DE6-FAD3-46FA-BCF9-8CA27E97FC24</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/81B48DE6-FAD3-46FA-BCF9-8CA27E97FC24</LogPath>
+      </SimDevice>
+      <SimDevice UDID="A9F3556C-C136-4FF1-818C-31822FC09DE5" Name="iPad (10th generation)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-3</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-10th-generation</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/A9F3556C-C136-4FF1-818C-31822FC09DE5</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/A9F3556C-C136-4FF1-818C-31822FC09DE5</LogPath>
+      </SimDevice>
+      <SimDevice UDID="81AC883E-4655-4974-95F2-05620F3E286F" Name="iPhone 16 Pro" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/81AC883E-4655-4974-95F2-05620F3E286F</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/81AC883E-4655-4974-95F2-05620F3E286F</LogPath>
+      </SimDevice>
+      <SimDevice UDID="9A917570-C102-408A-8F09-7E1E93DFC400" Name="iPhone 16 Pro" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/9A917570-C102-408A-8F09-7E1E93DFC400</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/9A917570-C102-408A-8F09-7E1E93DFC400</LogPath>
+      </SimDevice>
+      <SimDevice UDID="98EA1702-5597-46AF-B9E6-649F995D8464" Name="iPhone 16 Pro Max" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Pro-Max</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/98EA1702-5597-46AF-B9E6-649F995D8464</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/98EA1702-5597-46AF-B9E6-649F995D8464</LogPath>
+      </SimDevice>
+      <SimDevice UDID="233B2881-8F5C-4CDE-9E1A-8AAA855CA26B" Name="iPhone 16e" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16e</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/233B2881-8F5C-4CDE-9E1A-8AAA855CA26B</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/233B2881-8F5C-4CDE-9E1A-8AAA855CA26B</LogPath>
+      </SimDevice>
+      <SimDevice UDID="15E36CCA-1B27-4C7D-9123-8BD4B6CE7320" Name="iPhone 16" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/15E36CCA-1B27-4C7D-9123-8BD4B6CE7320</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/15E36CCA-1B27-4C7D-9123-8BD4B6CE7320</LogPath>
+      </SimDevice>
+      <SimDevice UDID="32AF7657-82C4-47AE-825E-089C7DAA3F48" Name="iPhone 16 Plus" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPhone-16-Plus</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/32AF7657-82C4-47AE-825E-089C7DAA3F48</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/32AF7657-82C4-47AE-825E-089C7DAA3F48</LogPath>
+      </SimDevice>
+      <SimDevice UDID="3C6EE3D7-C025-4E11-A2AE-61E4D0CBD891" Name="iPad Pro 11-inch (M4)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-11-inch-M4-8GB</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/3C6EE3D7-C025-4E11-A2AE-61E4D0CBD891</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/3C6EE3D7-C025-4E11-A2AE-61E4D0CBD891</LogPath>
+      </SimDevice>
+      <SimDevice UDID="76A108B2-3EDC-4A5A-A9FD-33FD49C86359" Name="iPad Pro 13-inch (M4)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Pro-13-inch-M4-8GB</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/76A108B2-3EDC-4A5A-A9FD-33FD49C86359</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/76A108B2-3EDC-4A5A-A9FD-33FD49C86359</LogPath>
+      </SimDevice>
+      <SimDevice UDID="A5B93AB2-90C3-422F-B44D-89C46B1D4BCC" Name="iPad mini (A17 Pro)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-mini-A17-Pro</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/A5B93AB2-90C3-422F-B44D-89C46B1D4BCC</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/A5B93AB2-90C3-422F-B44D-89C46B1D4BCC</LogPath>
+      </SimDevice>
+      <SimDevice UDID="29FA3E87-2C3D-4947-A035-E4D2CEBAD12D" Name="iPad (A16)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-A16</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/29FA3E87-2C3D-4947-A035-E4D2CEBAD12D</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/29FA3E87-2C3D-4947-A035-E4D2CEBAD12D</LogPath>
+      </SimDevice>
+      <SimDevice UDID="76BA6724-6FEA-4298-B9EC-2CF6F91BFB3F" Name="iPad Air 13-inch (M3)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Air-13-inch-M3</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/76BA6724-6FEA-4298-B9EC-2CF6F91BFB3F</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/76BA6724-6FEA-4298-B9EC-2CF6F91BFB3F</LogPath>
+      </SimDevice>
+      <SimDevice UDID="FF3E8258-9E94-49C4-A25F-8855F3C51F8C" Name="iPad Air 11-inch (M3)" State="Shutdown">
+        <SimRuntime>com.apple.CoreSimulator.SimRuntime.iOS-18-5</SimRuntime>
+        <SimDeviceType>com.apple.CoreSimulator.SimDeviceType.iPad-Air-11-inch-M3</SimDeviceType>
+        <DataPath>/Users/pannam/Library/Developer/CoreSimulator/Devices/FF3E8258-9E94-49C4-A25F-8855F3C51F8C</DataPath>
+        <LogPath>/Users/pannam/Library/Logs/CoreSimulator/FF3E8258-9E94-49C4-A25F-8855F3C51F8C</LogPath>
+      </SimDevice>
+    </AvailableDevices>
+    <AvailableDevicePairs Count="0" />
+  </Simulator>
+</MTouch>

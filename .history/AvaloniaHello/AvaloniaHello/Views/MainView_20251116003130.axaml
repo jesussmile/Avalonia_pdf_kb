@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaHello.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaHello.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+  <Border Padding="32" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel Spacing="12" Width="360">
+      <TextBlock Text="{Binding Greeting}" FontSize="28" TextAlignment="Center"/>
+      <TextBlock TextWrapping="Wrap" TextAlignment="Center"
+                 Text="Windows • macOS • Linux • iOS • Android • Browser"/>
+      <TextBlock Text="Type below to test platform keyboards" TextAlignment="Center"/>
+      <TextBox Text="{Binding UserMessage, Mode=TwoWay}" Watermark="Tap to start typing" MinWidth="200"
+               HorizontalAlignment="Stretch"/>
+      <TextBlock Text="You typed:" FontWeight="Bold"/>
+      <TextBlock Text="{Binding UserMessage}" TextWrapping="Wrap"/>
+    </StackPanel>
+  </Border>
+</UserControl>
