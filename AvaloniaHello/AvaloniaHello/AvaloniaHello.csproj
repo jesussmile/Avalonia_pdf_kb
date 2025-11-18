@@ -27,6 +27,7 @@
       <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Mapsui.Nts" />
     <PackageReference Include="MuPDFCore.MuPDFRenderer" />
     <PackageReference Include="MuPDFCore.NativeAssets.Win-x64" />
     <PackageReference Include="Mapsui.Avalonia" />

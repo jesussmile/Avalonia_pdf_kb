@@ -6,12 +6,89 @@
              xmlns:mapsui="clr-namespace:Mapsui.UI.Avalonia;assembly=Mapsui.UI.Avalonia"
              mc:Ignorable="d"
              x:Class="AvaloniaHello.Views.MapsView"
+             x:Name="RoutePlannerView"
              x:DataType="vm:MapsViewModel">
-  <Grid RowDefinitions="Auto,*" Background="#0b1522">
-    <StackPanel Orientation="Horizontal" Spacing="12" Margin="24" HorizontalAlignment="Left">
+  <Grid RowDefinitions="Auto,Auto,*" Background="#0b1522">
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="24" HorizontalAlignment="Left">
       <Button Content="Back" Command="{Binding GoHomeCommand}" Padding="18,10" CornerRadius="10" Background="#1f3a8a" Foreground="White"/>
       <TextBlock Text="Explore the map" VerticalAlignment="Center" Foreground="White" FontSize="22"/>
     </StackPanel>
-    <mapsui:MapControl x:Name="MapHost" Grid.Row="1" Margin="24"/>
+
+    <Border Grid.Row="1" Margin="24,0,24,12" Padding="18" Background="#111827" CornerRadius="12">
+      <StackPanel Spacing="12">
+        <TextBlock Text="Plan your route" FontSize="18" FontWeight="SemiBold" Foreground="#bfdbfe"/>
+        
+        <Border Background="#0b1522" CornerRadius="8" BorderBrush="#1f3a8a" BorderThickness="1" Padding="8">
+          <DockPanel>
+            <ItemsControl DockPanel.Dock="Left" 
+                          ItemsSource="{Binding RouteStops}" 
+                          VerticalAlignment="Center"
+                          DragDrop.AllowDrop="True"
+                          DragDrop.Drop="OnChipContainerDrop"
+                          DragDrop.DragOver="OnChipContainerDragOver">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <StackPanel Orientation="Horizontal" Spacing="4"/>
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:MapsViewModel+RouteStop">
+                  <Border CornerRadius="14"
+                          Background="#1d4ed8"
+                          Padding="8,4"
+                          Margin="0,0,4,0"
+                          DragDrop.AllowDrop="True"
+                          PointerPressed="OnChipPointerPressed"
+                          DragDrop.Drop="OnChipDrop"
+                          DragDrop.DragOver="OnChipDragOver"
+                          Cursor="Hand">
+                    <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                      <TextBlock Text="{Binding Marker.Label}" Foreground="White" FontWeight="SemiBold" FontSize="13"/>
+                      <Button Content="×"
+                              Command="{Binding DataContext.RemoveRouteStopCommand, ElementName=RoutePlannerView}"
+                              CommandParameter="{Binding}"
+                              Background="Transparent"
+                              BorderBrush="Transparent"
+                              Foreground="White"
+                              Padding="2"
+                              FontSize="16"
+                              FontWeight="Bold"
+                              VerticalAlignment="Center"
+                              Cursor="Hand"/>
+                    </StackPanel>
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+            <AutoCompleteBox x:Name="AirportPicker"
+                             ItemsSource="{Binding AirportSuggestions}"
+                             ValueMemberBinding="{Binding Label}"
+                             SelectionChanged="OnAirportSelectionChanged"
+                             Watermark="Type airport code..."
+                             MinimumPrefixLength="1"
+                             FilterMode="Contains"
+                             IsTextCompletionEnabled="False"
+                             MaxDropDownHeight="320"
+                             Background="Transparent"
+                             Foreground="White"
+                             BorderThickness="0"
+                             Padding="8,4"
+                             VerticalAlignment="Center">
+              <AutoCompleteBox.ItemTemplate>
+                <DataTemplate x:DataType="vm:MapsViewModel+NavMarker">
+                  <StackPanel Spacing="2">
+                    <TextBlock Text="{Binding Label}" FontWeight="SemiBold" Foreground="White"/>
+                    <TextBlock Text="{Binding Name}" FontSize="11" Foreground="#9ca3af"/>
+                  </StackPanel>
+                </DataTemplate>
+              </AutoCompleteBox.ItemTemplate>
+            </AutoCompleteBox>
+          </DockPanel>
+        </Border>
+      </StackPanel>
+    </Border>
+
+    <mapsui:MapControl x:Name="MapHost" Grid.Row="2" Margin="24"/>
   </Grid>
 </UserControl>

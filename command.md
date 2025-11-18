@@ -1,0 +1,1 @@
+dotnet run --project "c:\Users\pannam\Desktop\Avalonia_pdf_kb\AvaloniaHello\AvaloniaHello.Desktop\AvaloniaHello.Desktop.csproj"
