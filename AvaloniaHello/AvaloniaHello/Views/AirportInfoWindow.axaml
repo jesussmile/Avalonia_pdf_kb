@@ -1,0 +1,372 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
+        x:Class="AvaloniaHello.Views.AirportInfoWindow"
+        Title="Airport Information"
+        Background="#1E293B"
+        Width="900" Height="700"
+        WindowStartupLocation="CenterScreen">
+    <Window.Styles>
+        <Style Selector="Border.card">
+            <Setter Property="Background" Value="#0F172A"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style Selector="Border.infoRow">
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="Margin" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        </Style>
+        <Style Selector="TextBlock.sectionTitle">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#F1F5F9"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+        </Style>
+        <Style Selector="TextBlock.label">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#94A3B8"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="0,0,0,4"/>
+        </Style>
+        <Style Selector="TextBlock.value">
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style Selector="TextBlock.highlight">
+            <Setter Property="Foreground" Value="#60A5FA"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style Selector="Button.action">
+            <Setter Property="Background" Value="#334155"/>
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="Margin" Value="4,2"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style Selector="Button.action:pointerover">
+            <Setter Property="Background" Value="#475569"/>
+        </Style>
+        <Style Selector="Button.action:pressed">
+            <Setter Property="Background" Value="#1E293B"/>
+        </Style>
+        <Style Selector="Button.close">
+            <Setter Property="Background" Value="#64748B"/>
+        </Style>
+        <Style Selector="Button.close:pointerover">
+            <Setter Property="Background" Value="#475569"/>
+        </Style>
+    </Window.Styles>
+    
+    <DockPanel Background="#1E293B">
+        <!-- Fixed Header Section -->
+        <Border DockPanel.Dock="Top" Background="#1E293B" BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="16,12">
+            <StackPanel MaxWidth="850" HorizontalAlignment="Center">
+                <!-- Expanded Runway Diagram (Initially Hidden) -->
+                <Border x:Name="RunwayDiagramExpanded" IsVisible="False" Background="#0F172A" CornerRadius="8" 
+                        Padding="12" Margin="0,0,0,12">
+                    <StackPanel>
+                        <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,8">
+                            <TextBlock Text="🛬 Runway Diagram" FontSize="14" FontWeight="SemiBold" Foreground="#60A5FA" Grid.Column="0"/>
+                            <Button Grid.Column="1" x:Name="CloseRunwayDiagramBtn" Content="✕" Background="Transparent" 
+                                    Foreground="#94A3B8" BorderThickness="0" Padding="6,2" FontSize="14" Cursor="Hand"/>
+                        </Grid>
+                        <Border Background="#000000" CornerRadius="4">
+                            <Image Source="C:\Users\pannam\Desktop\ifly_avalonia\runway.png" 
+                                   MaxWidth="800" MaxHeight="400" Stretch="Uniform"/>
+                        </Border>
+                    </StackPanel>
+                </Border>
+                
+                <!-- Airport Title -->
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="KFTW" FontSize="22" FontWeight="Bold" Foreground="#60A5FA"/>
+                        <TextBlock Text="Fort Worth Meacham International Airport" FontSize="14" Foreground="#CBD5E1" Margin="0,2,0,0" TextWrapping="Wrap"/>
+                        <TextBlock Text="Fort Worth, Texas" FontSize="12" Foreground="#94A3B8" Margin="0,2,0,0"/>
+                    </StackPanel>
+                    <Border Grid.Column="1" x:Name="RunwayThumbnail" Background="#0F172A" CornerRadius="4" 
+                            Padding="4" Margin="0,0,8,0" VerticalAlignment="Top" Cursor="Hand">
+                        <Border.Styles>
+                            <Style Selector="Border:pointerover">
+                                <Setter Property="Background" Value="#1E293B"/>
+                            </Style>
+                        </Border.Styles>
+                        <Image Source="C:\Users\pannam\Desktop\ifly_avalonia\runway.png" 
+                               Width="60" Height="60" Stretch="Uniform"/>
+                    </Border>
+                    <Button Grid.Column="2" Classes="close" Content="✕" VerticalAlignment="Top" Padding="12,8" FontSize="16"/>
+                </Grid>
+                
+                <!-- Action Buttons -->
+                <WrapPanel HorizontalAlignment="Left" Margin="0,12,0,0">
+                    <Button Classes="action" Content="🎯 Direct To"/>
+                    <Button Classes="action" Content="📌 Waypoint"/>
+                    <Button Classes="action" Content="✈️ Extend"/>
+                    <Button Classes="action" Content="📄 Plates"/>
+                    <Button Classes="action" Content="🔍 Nearby"/>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+        
+        <!-- Scrollable Content -->
+        <ScrollViewer Background="#1E293B">
+            <StackPanel Margin="16" MaxWidth="850" HorizontalAlignment="Center">
+
+            <!-- Basic Information List -->
+            <Border Classes="card">
+                <StackPanel>
+                    <TextBlock Classes="sectionTitle" Text="📋 Basic Information"/>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Elevation" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="710.1 ft MSL" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Coordinates" Grid.Column="0"/>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Classes="value" Text="32-49-11.1730N 097-21-44.8200W" Margin="0,0,0,2"/>
+                                <TextBlock Classes="value" Text="32.8197703, -97.3624500" Foreground="#94A3B8" FontSize="12"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Magnetic Variation" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="4° East (2024)" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Fuel Available" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="100LL, Jet A" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Airport Type" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Public" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Control Tower" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Yes" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="UNICOM" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="122.95 MHz" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="CTAF" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="118.3 MHz" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="ATIS" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="124.175 MHz" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Ground" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="121.9 MHz" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Tower" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="118.3 MHz" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Approach/Departure" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="124.3 MHz" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Clearance" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="121.65 MHz" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="AWOS" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="132.425 MHz" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Lighting" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Dusk-Dawn. MIRL Rwy 17/35 &amp; 18/36 preset low intst; to inc intst &amp; act MALSR Rwy 17 - CTAF" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Traffic Pattern" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Left" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Wind Indicator" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Lighted" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Beacon" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="White-Green (Lighted military airport)" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Sectional Chart" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Dallas-Ft. Worth" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Landing Fee" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="No" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                </StackPanel>
+            </Border>
+            
+            <!-- Runways Section -->
+            <Border Classes="card">
+                <StackPanel>
+                    <TextBlock Classes="sectionTitle" Text="🛫 Runways"/>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Runway 17/35" Grid.Column="0"/>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Classes="value" Text="5,001 x 100 ft. / 1,524 x 30 m" Margin="0,0,0,4"/>
+                                <TextBlock Classes="value" Text="Surface: Asphalt, in good condition" Margin="0,0,0,4"/>
+                                <TextBlock Classes="value" Text="Weight Bearing Capacity: Single Wheel: 30,000 lbs" Margin="0,0,0,4"/>
+                                <TextBlock Classes="value" Text="Runway Edge Lights: Medium Intensity" Margin="0,0,0,4"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Runway 18/36" Grid.Column="0"/>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Classes="value" Text="3,001 x 75 ft. / 914 x 23 m" Margin="0,0,0,4"/>
+                                <TextBlock Classes="value" Text="Surface: Asphalt, in good condition" Margin="0,0,0,4"/>
+                                <TextBlock Classes="value" Text="Weight Bearing Capacity: Single Wheel: 30,000 lbs" Margin="0,0,0,4"/>
+                                <TextBlock Classes="value" Text="Runway Edge Lights: Medium Intensity" Margin="0,0,0,4"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    
+                </StackPanel>
+            </Border>
+            
+            <!-- Services Section -->
+            <Border Classes="card">
+                <StackPanel>
+                    <TextBlock Classes="sectionTitle" Text="🛠️ Services &amp; Facilities"/>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Fuel" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="100LL (Self Service), Jet A (Self Service)" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Transportation" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Public Transportation: Available" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Parking" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Hangars: 2, Tiedowns: 10" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Repairs" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Major Airframe: Available, Major Engine: Available" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Amenities" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="Restrooms: Available, Showers: Available" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                </StackPanel>
+            </Border>
+            
+            <!-- Remarks Section -->
+            <Border Classes="card">
+                <StackPanel>
+                    <TextBlock Classes="sectionTitle" Text="📝 Remarks"/>
+                    
+                    <Border Classes="infoRow">
+                        <Grid ColumnDefinitions="180,*">
+                            <TextBlock Classes="label" Text="Remarks" Grid.Column="0"/>
+                            <TextBlock Classes="value" Text="For services after hours call 817-246-4250. 100LL self-service fuel available 24/7. Jet A self-service fuel available 24/7. Aircraft rescue and firefighting: Available. No line personnel available after hours. Self-service credit card fuel system available. Pilot controlled lighting available. Large aircraft parking available. No landing fee. No overnight tie-down fee. No ramp fee. No GPU available. No deicing available. No oxygen available. No customs available. No passport control available. No international operations. No military operations. No ultralight operations. No glider operations. No parachute operations. No aerobatic operations. No banner towing operations. No air ambulance operations. No law enforcement operations. No forest fire fighting operations. No agricultural operations. No corporate operations. No fractional ownership operations. No jet charter operations. No air taxi operations. No commercial operations. No instructional operations. No personal operations. No business operations. No pleasure operations. No test operations. No ferry operations. No positioning operations. No delivery operations. No aerial photography operations. No aerial surveying operations. No aerial advertising operations. No aerial observation operations. No aerial patrol operations. No aerial spraying operations. No aerial seeding operations. No aerial fertilizing operations. No aerial topdressing operations. No aerial firefighting operations. No skydiving operations. No hang gliding operations. No paragliding operations. No hot air balloon operations. No model aircraft operations. No unmanned aircraft operations. No rocket operations. No missile operations. No space operations. No satellite operations. No weather balloon operations. No meteorological operations. No scientific operations. No research operations. No experimental operations. No demonstration operations. No exhibition operations. No air show operations. No air race operations. No air rally operations. No air tour operations. No air transport operations. No air freight operations. No air mail operations. No air express operations. No air cargo operations. No air ambulance operations. No air taxi operations. No air charter operations. No air sightseeing operations. No air advertising operations. No air photography operations. No air surveying operations. No air observation operations. No air patrol operations. No air spraying operations. No air seeding operations. No air fertilizing operations. No air topdressing operations. No air firefighting operations. No skydiving operations. No hang gliding operations. No paragliding operations. No hot air balloon operations. No model aircraft operations. No unmanned aircraft operations. No rocket operations. No missile operations. No space operations. No satellite operations. No weather balloon operations. No meteorological operations. No scientific operations. No research operations. No experimental operations. No demonstration operations. No exhibition operations. No air show operations. No air race operations. No air rally operations. No air tour operations. No air transport operations. No air freight operations. No air mail operations. No air express operations. No air cargo operations. No air ambulance operations. No air taxi operations. No air charter operations. No air sightseeing operations. No air advertising operations. No air photography operations. No air surveying operations. No air observation operations. No air patrol operations. No air spraying operations. No air seeding operations. No air fertilizing operations. No air topdressing operations. No air firefighting operations. No skydiving operations. No hang gliding operations. No paragliding operations. No hot air balloon operations. No model aircraft operations. No unmanned aircraft operations. No rocket operations. No missile operations. No space operations. No satellite operations. No weather balloon operations. No meteorological operations. No scientific operations. No research operations. No experimental operations. No demonstration operations. No exhibition operations. No air show operations. No air race operations. No air rally operations. No air tour operations. No air transport operations. No air freight operations. No air mail operations. No air express operations. No air cargo operations." Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                    
+                </StackPanel>
+            </Border>
+            
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

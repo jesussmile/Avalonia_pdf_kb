@@ -40,6 +40,8 @@
               Background="#1f3a8a" Foreground="White" FontWeight="SemiBold" />
             <Button Content="Open Maps" Command="{Binding OpenMapsCommand}" Height="48" CornerRadius="12"
               Background="#2563eb" Foreground="White" FontWeight="SemiBold" />
+            <Button Content="Airport Information" Command="{Binding OpenAirportInfoCommand}" Height="48" CornerRadius="12"
+              Background="#059669" Foreground="White" FontWeight="SemiBold" />
        <TextBox Text="{Binding UserMessage, Mode=TwoWay}" Watermark="Tap anywhere to type"
          FontSize="18" MinHeight="56" Padding="12" CornerRadius="12"/>
       <StackPanel Spacing="4">
