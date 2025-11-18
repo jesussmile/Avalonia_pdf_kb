@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mapsui;
@@ -25,6 +27,12 @@ public partial class MapsViewModel : ViewModelBase
     private readonly ObservableCollection<RouteStop> _routeStops = new();
     private readonly MemoryLayer _routeLineLayer;
     private readonly MemoryLayer _routeMarkerLayer;
+    private MemoryLayer? _airportLayer;
+    private CancellationTokenSource? _glowAnimationCts;
+    private double _glowAnimationPhase = 0;
+
+    [ObservableProperty]
+    private string? _selectedAirportLabel;
 
     public MapsViewModel(Action? goHomeCallback = null)
     {
@@ -167,12 +175,133 @@ public partial class MapsViewModel : ViewModelBase
                    string.Equals(m.Name, query, StringComparison.OrdinalIgnoreCase));
     }
 
+    public void SelectAirport(string? airportLabel)
+    {
+        // Cancel any existing animation
+        _glowAnimationCts?.Cancel();
+        _glowAnimationCts?.Dispose();
+        _glowAnimationCts = null;
+
+        SelectedAirportLabel = airportLabel;
+        
+        if (!string.IsNullOrEmpty(airportLabel))
+        {
+            // Start glow animation
+            _glowAnimationCts = new CancellationTokenSource();
+            _ = AnimateGlowAsync(_glowAnimationCts.Token);
+        }
+        else
+        {
+            UpdateAirportMarkerStyles();
+        }
+    }
+
+    private async Task AnimateGlowAsync(CancellationToken cancellationToken)
+    {
+        try
+        {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                _glowAnimationPhase += 0.08;
+                if (_glowAnimationPhase > Math.PI * 2)
+                {
+                    _glowAnimationPhase = 0;
+                }
+
+                UpdateAirportMarkerStyles();
+                Map?.RefreshGraphics();
+                await Task.Delay(40, cancellationToken);
+            }
+        }
+        catch (TaskCanceledException)
+        {
+            // Animation was cancelled, this is expected
+        }
+    }
+
+    public void PanMapToAirport(string airportLabel, double panOffsetX = -200)
+    {
+        var airport = AirportMarkers.FirstOrDefault(m => 
+            string.Equals(m.Label, airportLabel, StringComparison.OrdinalIgnoreCase));
+        
+        if (airport == null || Map.Navigator == null) return;
+
+        var airportPoint = ToPoint(airport.Latitude, airport.Longitude);
+        
+        // Calculate offset in map coordinates (shift left to make room for panel)
+        var offsetInMapUnits = panOffsetX * Map.Navigator.Viewport.Resolution;
+        var targetPoint = new MPoint(airportPoint.X + offsetInMapUnits, airportPoint.Y);
+        
+        // Animate pan to the target position
+        Map.Navigator.CenterOn(targetPoint, 500, Easing.CubicOut);
+    }
+
+    private void UpdateAirportMarkerStyles()
+    {
+        if (_airportLayer?.Features == null) return;
+
+        foreach (var feature in _airportLayer.Features)
+        {
+            var label = feature["Label"]?.ToString();
+            var isSelected = !string.IsNullOrEmpty(SelectedAirportLabel) && 
+                           string.Equals(label, SelectedAirportLabel, StringComparison.OrdinalIgnoreCase);
+
+            feature.Styles.Clear();
+            
+            // Add base symbol style
+            feature.Styles.Add(new SymbolStyle
+            {
+                SymbolType = SymbolType.Ellipse,
+                SymbolScale = 0.8,
+                Fill = null,
+                Outline = new Pen(Color.FromArgb(255, 17, 94, 224), 3)
+            });
+
+            // Add animated glow effect for selected airport
+            if (isSelected)
+            {
+                // Calculate pulsing values using sine wave
+                var pulse = (Math.Sin(_glowAnimationPhase) + 1) / 2; // 0 to 1
+                
+                // Bright outer glow ring (visible on white background)
+                feature.Styles.Add(new SymbolStyle
+                {
+                    SymbolType = SymbolType.Ellipse,
+                    SymbolScale = 1.6 + (pulse * 0.25), // 1.6 to 1.85
+                    Fill = new Brush(Color.FromArgb((int)(100 + pulse * 60), 59, 130, 246)), // brighter pulse
+                    Outline = new Pen(Color.FromArgb((int)(180 + pulse * 75), 37, 99, 235), 3)
+                });
+                
+                // Bright center with filled marker
+                feature.Styles.Add(new SymbolStyle
+                {
+                    SymbolType = SymbolType.Ellipse,
+                    SymbolScale = 0.8,
+                    Fill = new Brush(Color.FromArgb(255, 59, 130, 246)),
+                    Outline = new Pen(Color.FromArgb(255, 147, 197, 253), 4) // bright blue outline
+                });
+            }
+
+            // Add label style
+            feature.Styles.Add(new LabelStyle
+            {
+                LabelColumn = "Label",
+                ForeColor = Color.White,
+                BackColor = new Brush { Color = Color.FromArgb(180, 17, 94, 224) },
+                Halo = new Pen(Color.FromArgb(220, 0, 0, 0), 2),
+                Offset = new Offset(0, -24)
+            });
+        }
+
+        Map.RefreshData();
+    }
+
     private Map CreateMap()
     {
         var map = new Map();
         map.Layers.Add(OpenStreetMap.CreateTileLayer());
 
-        map.Layers.Add(CreateLayer(
+        _airportLayer = CreateLayer(
             "Airports",
             AirportMarkers,
             () => new SymbolStyle
@@ -189,7 +318,9 @@ public partial class MapsViewModel : ViewModelBase
                 BackColor = new Brush { Color = Color.FromArgb(180, 17, 94, 224) },
                 Halo = new Pen(Color.FromArgb(220, 0, 0, 0), 2),
                 Offset = new Offset(0, -24)
-            }));
+            });
+        
+        map.Layers.Add(_airportLayer);
 
         map.Layers.Add(CreateLayer(
             "Waypoints",
@@ -276,9 +407,9 @@ public partial class MapsViewModel : ViewModelBase
             feature.Styles.Add(new LabelStyle
             {
                 LabelColumn = "Label",
-                ForeColor = Color.FromArgb(255, 17, 94, 224),
-                BackColor = new Brush { Color = Color.FromArgb(210, 255, 255, 255) },
-                Halo = new Pen(Color.FromArgb(220, 0, 0, 0), 2),
+                ForeColor = Color.White,
+                BackColor = new Brush { Color = Color.FromArgb(220, 59, 130, 246) },
+                Halo = new Pen(Color.FromArgb(200, 0, 0, 0), 2),
                 Offset = new Offset(0, -22)
             });
 
@@ -412,6 +543,7 @@ public partial class MapsViewModel : ViewModelBase
     public sealed class RouteStop : ObservableObject
     {
         private int _order = 1;
+        private bool _isDragging;
 
         public RouteStop(NavMarker marker, MPoint position)
         {
@@ -427,6 +559,12 @@ public partial class MapsViewModel : ViewModelBase
         {
             get => _order;
             set => SetProperty(ref _order, value);
+        }
+
+        public bool IsDragging
+        {
+            get => _isDragging;
+            set => SetProperty(ref _isDragging, value);
         }
 
         public string Label => Marker.Label;

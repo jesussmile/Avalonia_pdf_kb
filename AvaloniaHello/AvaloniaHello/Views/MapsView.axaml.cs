@@ -1,8 +1,11 @@
 using System;
+using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.LogicalTree;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
 using AvaloniaHello.ViewModels;
 using Mapsui.Animations;
 
@@ -11,12 +14,33 @@ namespace AvaloniaHello.Views;
 public partial class MapsView : UserControl
 {
     private const string RouteStopDataFormat = "AvaloniaHello.RouteStop";
+    private bool _shouldClearPicker;
 
     public MapsView()
     {
         InitializeComponent();
         DataContextChanged += OnDataContextChanged;
         MapHost.Loaded += OnMapHostLoaded;
+        MapHost.Info += OnMapInfo;
+        
+        var closeBtn = this.FindControl<Button>("CloseInfoBtn");
+        if (closeBtn != null)
+        {
+            closeBtn.Click += OnCloseInfoClick;
+        }
+        
+        var runwayThumbnail = this.FindControl<Border>("RunwayThumbnail");
+        if (runwayThumbnail != null)
+        {
+            runwayThumbnail.PointerPressed += OnRunwayThumbnailClick;
+        }
+        
+        var closeRunwayBtn = this.FindControl<Button>("CloseRunwayDiagramBtn");
+        if (closeRunwayBtn != null)
+        {
+            closeRunwayBtn.Click += OnCloseRunwayDiagramClick;
+        }
+        
         ApplyMapFromDataContext();
     }
 
@@ -67,16 +91,34 @@ public partial class MapsView : UserControl
             return;
         }
 
-        if (picker.SelectedItem is MapsViewModel.NavMarker marker && viewModel.TryAddRouteStop(marker))
+        if (picker.SelectedItem is MapsViewModel.NavMarker marker)
         {
-            ResetAirportPicker(picker);
+            viewModel.TryAddRouteStop(marker);
+            _shouldClearPicker = true;
+            
+            Dispatcher.UIThread.Post(() =>
+            {
+                if (_shouldClearPicker)
+                {
+                    ResetAirportPicker(picker);
+                    _shouldClearPicker = false;
+                }
+            }, DispatcherPriority.Loaded);
         }
     }
 
     private static void ResetAirportPicker(AutoCompleteBox picker)
     {
-        picker.Text = string.Empty;
         picker.SelectedItem = null;
+        picker.Text = string.Empty;
+        
+        // Find and clear the internal TextBox
+        var textBox = picker.GetVisualDescendants().OfType<TextBox>().FirstOrDefault();
+        if (textBox != null)
+        {
+            textBox.Text = string.Empty;
+            textBox.Clear();
+        }
     }
 
     private async void OnChipPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -97,10 +139,16 @@ public partial class MapsView : UserControl
             return;
         }
 
+        // Set dragging state
+        routeStop.IsDragging = true;
+
         var dataObject = new DataObject();
         dataObject.Set(RouteStopDataFormat, routeStop);
 
         await DragDrop.DoDragDrop(e, dataObject, DragDropEffects.Move);
+
+        // Reset dragging state after drag operation
+        routeStop.IsDragging = false;
     }
 
     private void OnChipDragOver(object? sender, DragEventArgs e)
@@ -178,5 +226,66 @@ public partial class MapsView : UserControl
 
         viewModel.MoveRouteStop(routeStop, null, true);
         e.Handled = true;
+    }
+
+    private void OnMapInfo(object? sender, EventArgs e)
+    {
+        Console.WriteLine($"Map Info event triggered - showing KFTW panel");
+        
+        var panel = this.FindControl<Border>("AirportInfoPanel");
+        if (panel != null)
+        {
+            panel.IsVisible = true;
+        }
+
+        // Highlight KFTW marker with animated blue glow and pan map
+        if (DataContext is MapsViewModel viewModel)
+        {
+            viewModel.SelectAirport("KFTW");
+            
+            // Pan map to keep airport visible near the information panel
+            // Shift left by 200 pixels to account for the 450px panel width
+            viewModel.PanMapToAirport("KFTW", -200);
+        }
+    }
+
+    private void OnCloseInfoClick(object? sender, RoutedEventArgs e)
+    {
+        var panel = this.FindControl<Border>("AirportInfoPanel");
+        if (panel != null)
+        {
+            panel.IsVisible = false;
+        }
+        
+        // Also hide the expanded diagram if visible
+        var expandedDiagram = this.FindControl<Border>("RunwayDiagramExpanded");
+        if (expandedDiagram != null)
+        {
+            expandedDiagram.IsVisible = false;
+        }
+
+        // Remove KFTW selection glow
+        if (DataContext is MapsViewModel viewModel)
+        {
+            viewModel.SelectAirport(null);
+        }
+    }
+
+    private void OnRunwayThumbnailClick(object? sender, PointerPressedEventArgs e)
+    {
+        var expandedDiagram = this.FindControl<Border>("RunwayDiagramExpanded");
+        if (expandedDiagram != null)
+        {
+            expandedDiagram.IsVisible = true;
+        }
+    }
+
+    private void OnCloseRunwayDiagramClick(object? sender, RoutedEventArgs e)
+    {
+        var expandedDiagram = this.FindControl<Border>("RunwayDiagramExpanded");
+        if (expandedDiagram != null)
+        {
+            expandedDiagram.IsVisible = false;
+        }
     }
 }

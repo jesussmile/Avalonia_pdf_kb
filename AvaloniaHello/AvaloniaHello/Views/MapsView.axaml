@@ -8,13 +8,28 @@
              x:Class="AvaloniaHello.Views.MapsView"
              x:Name="RoutePlannerView"
              x:DataType="vm:MapsViewModel">
-  <Grid RowDefinitions="Auto,Auto,*" Background="#0b1522">
-    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="24" HorizontalAlignment="Left">
-      <Button Content="Back" Command="{Binding GoHomeCommand}" Padding="18,10" CornerRadius="10" Background="#1f3a8a" Foreground="White"/>
-      <TextBlock Text="Explore the map" VerticalAlignment="Center" Foreground="White" FontSize="22"/>
-    </StackPanel>
+  <Grid RowDefinitions="Auto,*" Background="#0b1522">
+    <!-- Back Button Icon -->
+    <Button Grid.Row="0" 
+            Command="{Binding GoHomeCommand}" 
+            Padding="12" 
+            CornerRadius="8" 
+            Background="#1E293B" 
+            Foreground="White"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="20,20,20,0"
+            Cursor="Hand"
+            ToolTip.Tip="Back to Home">
+      <Button.Styles>
+        <Style Selector="Button:pointerover">
+          <Setter Property="Background" Value="#334155"/>
+        </Style>
+      </Button.Styles>
+      <TextBlock Text="←" FontSize="20" FontWeight="Bold"/>
+    </Button>
 
-    <Border Grid.Row="1" Margin="24,0,24,12" Padding="18" Background="#111827" CornerRadius="12">
+    <Border Grid.Row="0" Margin="20,20,20,16" Padding="16" Background="#111827" CornerRadius="12">
       <StackPanel Spacing="12">
         <TextBlock Text="Plan your route" FontSize="18" FontWeight="SemiBold" Foreground="#bfdbfe"/>
         
@@ -34,7 +49,7 @@
               <ItemsControl.ItemTemplate>
                 <DataTemplate x:DataType="vm:MapsViewModel+RouteStop">
                   <Border CornerRadius="14"
-                          Background="#1d4ed8"
+                          Background="{Binding IsDragging, Converter={StaticResource BoolToBrushConverter}, ConverterParameter=#1d4ed8;#eab308}"
                           Padding="8,4"
                           Margin="0,0,4,0"
                           DragDrop.AllowDrop="True"
@@ -63,7 +78,6 @@
             
             <AutoCompleteBox x:Name="AirportPicker"
                              ItemsSource="{Binding AirportSuggestions}"
-                             ValueMemberBinding="{Binding Label}"
                              SelectionChanged="OnAirportSelectionChanged"
                              Watermark="Type airport code..."
                              MinimumPrefixLength="1"
@@ -89,6 +103,366 @@
       </StackPanel>
     </Border>
 
-    <mapsui:MapControl x:Name="MapHost" Grid.Row="2" Margin="24"/>
+    <Grid Grid.Row="1" Margin="20,0,20,20">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      
+      <mapsui:MapControl x:Name="MapHost" Grid.Column="0"/>
+      
+      <!-- Airport Information Panel -->
+      <Border x:Name="AirportInfoPanel" 
+              Grid.Column="1" 
+              Width="450" 
+              Background="#1E293B" 
+              BorderBrush="#334155" 
+              BorderThickness="1,0,0,0"
+              IsVisible="False">
+        <DockPanel>
+          <!-- Fixed Header Section -->
+          <Border DockPanel.Dock="Top" Background="#1E293B" BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="12">
+            <StackPanel>
+              <!-- Expanded Runway Diagram (Initially Hidden) -->
+              <Border x:Name="RunwayDiagramExpanded" IsVisible="False" Background="#0F172A" CornerRadius="8" 
+                      Padding="10" Margin="0,0,0,10">
+                <StackPanel>
+                  <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,6">
+                    <TextBlock Text="🛬 Airport Diagram" FontSize="13" FontWeight="SemiBold" Foreground="#60A5FA" Grid.Column="0"/>
+                    <Button Grid.Column="1" x:Name="CloseRunwayDiagramBtn" Content="✕" Background="Transparent" 
+                            Foreground="#94A3B8" BorderThickness="0" Padding="4,2" FontSize="14" Cursor="Hand"/>
+                  </Grid>
+                  <Border Background="#000000" CornerRadius="4">
+                    <Image Source="C:\Users\pannam\Desktop\ifly_avalonia\runway.png" 
+                           MaxWidth="400" MaxHeight="300" Stretch="Uniform"/>
+                  </Border>
+                </StackPanel>
+              </Border>
+              
+              <!-- Airport Header with Close Button -->
+              <Grid ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,10">
+                <StackPanel Grid.Column="0">
+                  <TextBlock Text="KFTW" FontSize="18" FontWeight="Bold" Foreground="#60A5FA" Margin="0,0,0,2"/>
+                  <TextBlock Text="Fort Worth Meacham International Airport" FontSize="12" Foreground="#CBD5E1" TextWrapping="Wrap" Margin="0,0,0,1"/>
+                  <TextBlock Text="Fort Worth, Texas" FontSize="10" Foreground="#94A3B8"/>
+                </StackPanel>
+                <Border Grid.Column="1" x:Name="RunwayThumbnail" Background="#0F172A" CornerRadius="4" 
+                        Padding="3" Margin="0,0,8,0" Cursor="Hand" VerticalAlignment="Top">
+                  <Border.Styles>
+                    <Style Selector="Border:pointerover">
+                      <Setter Property="Background" Value="#334155"/>
+                    </Style>
+                  </Border.Styles>
+                  <Image Source="C:\Users\pannam\Desktop\ifly_avalonia\runway.png" 
+                         Width="36" Height="36" Stretch="Uniform"/>
+                </Border>
+                <Button Grid.Column="2" x:Name="CloseInfoBtn" Content="✕" Background="Transparent" 
+                        Foreground="#94A3B8" BorderThickness="0" Padding="6,4" FontSize="16" Cursor="Hand" VerticalAlignment="Top"/>
+              </Grid>
+              
+              <!-- Action Buttons -->
+              <StackPanel Spacing="6">
+                <StackPanel.Styles>
+                  <Style Selector="ToggleButton.toggleBtn">
+                    <Setter Property="Background" Value="#1E293B"/>
+                    <Setter Property="Foreground" Value="#94A3B8"/>
+                    <Setter Property="BorderBrush" Value="#334155"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="CornerRadius" Value="5"/>
+                    <Setter Property="Padding" Value="8,5"/>
+                    <Setter Property="FontWeight" Value="Medium"/>
+                    <Setter Property="FontSize" Value="10"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                  </Style>
+                  <Style Selector="ToggleButton.toggleBtn:pointerover">
+                    <Setter Property="Background" Value="#334155"/>
+                    <Setter Property="Foreground" Value="#E2E8F0"/>
+                  </Style>
+                  <Style Selector="ToggleButton.toggleBtn:checked">
+                    <Setter Property="Background" Value="#3B82F6"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderBrush" Value="#60A5FA"/>
+                  </Style>
+                  <Style Selector="Button.regularBtn">
+                    <Setter Property="Background" Value="#334155"/>
+                    <Setter Property="Foreground" Value="#E2E8F0"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="CornerRadius" Value="5"/>
+                    <Setter Property="Padding" Value="8,5"/>
+                    <Setter Property="FontWeight" Value="Medium"/>
+                    <Setter Property="FontSize" Value="10"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                  </Style>
+                  <Style Selector="Button.regularBtn:pointerover">
+                    <Setter Property="Background" Value="#475569"/>
+                  </Style>
+                  <Style Selector="Button.regularBtn:pressed">
+                    <Setter Property="Background" Value="#1E293B"/>
+                  </Style>
+                </StackPanel.Styles>
+                
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="4">
+                  <ToggleButton Grid.Column="0" Classes="toggleBtn" Content="🎯 Direct To"/>
+                  <ToggleButton Grid.Column="1" Classes="toggleBtn" Content="📌 Waypoint"/>
+                  <ToggleButton Grid.Column="2" Classes="toggleBtn" Content="✈️ Extend"/>
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+                  <Button Grid.Column="0" Classes="regularBtn" Content="📄 View Plates"/>
+                  <Button Grid.Column="1" Classes="regularBtn" Content="🔍 Search Nearby"/>
+                </Grid>
+              </StackPanel>
+            </StackPanel>
+          </Border>
+          
+          <!-- Scrollable Content -->
+          <ScrollViewer>
+            <StackPanel x:Name="AirportInfoContent" Margin="12,12,12,12">
+              
+              <!-- Basic Information -->
+              <Border Background="#0F172A" CornerRadius="8" Padding="12" Margin="0,0,0,12">
+                <StackPanel Spacing="6">
+                  <TextBlock Text="📋 Basic Information" FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+                  
+                  <Grid ColumnDefinitions="110,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="6">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Type" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Public Airport" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Elevation" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="710.1 ft MSL" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Coordinates" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="32°49'11&quot;N 97°21'45&quot;W" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Magnetic Var" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="8° East (1975)" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Control Tower" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="Yes" FontSize="12" Foreground="#10B981"/>
+                    
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Customs" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Text="User Fee Airport" FontSize="12" Foreground="#10B981"/>
+                    
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Opened" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="6" Grid.Column="1" Text="February 1938" FontSize="12" Foreground="#E2E8F0"/>
+                  </Grid>
+                </StackPanel>
+              </Border>
+              
+              <!-- Management & Contact -->
+              <Border Background="#0F172A" CornerRadius="8" Padding="12" Margin="0,0,0,12">
+                <StackPanel Spacing="6">
+                  <TextBlock Text="👤 Management" FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Owner" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="City of Fort Worth" FontSize="12" Foreground="#E2E8F0" TextWrapping="Wrap"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Manager" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="Aaron Barth" FontSize="12" Foreground="#E2E8F0"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Address" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="201 American Concourse, Suite 330" FontSize="12" Foreground="#E2E8F0" TextWrapping="Wrap"/>
+                    <TextBlock Text="Fort Worth, TX 76106-2749" FontSize="12" Foreground="#E2E8F0"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Phone" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="817-392-5400" FontSize="12" Foreground="#60A5FA"/>
+                  </StackPanel>
+                </StackPanel>
+              </Border>
+              
+              <!-- Frequencies -->
+              <Border Background="#0F172A" CornerRadius="8" Padding="12" Margin="0,0,0,12">
+                <StackPanel Spacing="6">
+                  <TextBlock Text="📻 Frequencies" FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+                  
+                  <Grid ColumnDefinitions="115,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="6">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="ATIS" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="120.7 MHz" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Tower" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="118.3 / 257.8 MHz" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Ground" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="121.9 MHz" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Clearance Del" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="124.65 MHz" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Approach" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="118.1 / 135.975 MHz" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="ASOS Phone" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" Text="817-740-3346" FontSize="12" Foreground="#E2E8F0"/>
+                  </Grid>
+                </StackPanel>
+              </Border>
+              
+              <!-- Runways -->
+              <Border Background="#0F172A" CornerRadius="8" Padding="12" Margin="0,0,0,12">
+                <StackPanel Spacing="8">
+                  <TextBlock Text="🛫 Runways" FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+                  
+                  <StackPanel Spacing="6">
+                    <TextBlock Text="Runway 16/34" FontSize="12" FontWeight="SemiBold" Foreground="#60A5FA"/>
+                    <Grid ColumnDefinitions="100,*" RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="4">
+                      <TextBlock Grid.Row="0" Grid.Column="0" Text="Dimensions" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="0" Grid.Column="1" Text="7,502 x 150 ft" FontSize="11" Foreground="#E2E8F0"/>
+                      
+                      <TextBlock Grid.Row="1" Grid.Column="0" Text="Surface" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="1" Grid.Column="1" Text="Concrete/Grooved" FontSize="11" Foreground="#E2E8F0"/>
+                      
+                      <TextBlock Grid.Row="2" Grid.Column="0" Text="Lighting" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="2" Grid.Column="1" Text="High Intensity" FontSize="11" Foreground="#E2E8F0"/>
+                      
+                      <TextBlock Grid.Row="3" Grid.Column="0" Text="Approach" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="3" Grid.Column="1" Text="ILS/DME Both Ends" FontSize="11" Foreground="#E2E8F0"/>
+                    </Grid>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="6">
+                    <TextBlock Text="Runway 17/35" FontSize="12" FontWeight="SemiBold" Foreground="#60A5FA"/>
+                    <Grid ColumnDefinitions="100,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
+                      <TextBlock Grid.Row="0" Grid.Column="0" Text="Dimensions" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="0" Grid.Column="1" Text="4,005 x 75 ft" FontSize="11" Foreground="#E2E8F0"/>
+                      
+                      <TextBlock Grid.Row="1" Grid.Column="0" Text="Surface" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="1" Grid.Column="1" Text="Asphalt" FontSize="11" Foreground="#E2E8F0"/>
+                      
+                      <TextBlock Grid.Row="2" Grid.Column="0" Text="Lighting" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="2" Grid.Column="1" Text="Medium Intensity" FontSize="11" Foreground="#E2E8F0"/>
+                    </Grid>
+                  </StackPanel>
+                </StackPanel>
+              </Border>
+              
+              <!-- Fuel & Services -->
+              <Border Background="#0F172A" CornerRadius="8" Padding="12" Margin="0,0,0,12">
+                <StackPanel Spacing="6">
+                  <TextBlock Text="⛽ Fuel &amp; Services" FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Fuel Types" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="100LL, Jet-A, Jet-A1+" FontSize="12" Foreground="#E2E8F0"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="FBO Services" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="Texas Jet, Modern Aviation FTW" FontSize="12" Foreground="#E2E8F0" TextWrapping="Wrap"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Recent Fuel Prices" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="100LL: $8.10/gal • Jet-A: $7.27/gal" FontSize="12" Foreground="#10B981" TextWrapping="Wrap"/>
+                    <TextBlock Text="Updated: Nov 18, 2025" FontSize="9" Foreground="#64748B"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Maintenance" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="Major Airframe &amp; Powerplant" FontSize="12" Foreground="#E2E8F0"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Storage" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="Hangars &amp; Tiedowns Available" FontSize="12" Foreground="#E2E8F0"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Oxygen" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Text="High Pressure (Bottled &amp; Bulk)" FontSize="12" Foreground="#E2E8F0"/>
+                  </StackPanel>
+                </StackPanel>
+              </Border>
+              
+              <!-- Fixed Base Operators -->
+              <Border Background="#0F172A" CornerRadius="8" Padding="12" Margin="0,0,0,12">
+                <StackPanel Spacing="8">
+                  <TextBlock Text="🏢 Fixed Base Operators (FBOs)" FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+                  
+                  <StackPanel Spacing="6">
+                    <TextBlock Text="Texas Jet" FontSize="12" FontWeight="SemiBold" Foreground="#60A5FA"/>
+                    <Grid ColumnDefinitions="90,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
+                      <TextBlock Grid.Row="0" Grid.Column="0" Text="ASRI" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="0" Grid.Column="1" Text="129.85 MHz" FontSize="11" Foreground="#E2E8F0"/>
+                      
+                      <TextBlock Grid.Row="1" Grid.Column="0" Text="Phone" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="1" Grid.Column="1" Text="817-624-8438" FontSize="11" Foreground="#60A5FA"/>
+                      
+                      <TextBlock Grid.Row="2" Grid.Column="0" Text="Features" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="2" Grid.Column="1" Text="Top 5 Independent FBO, WiFi, Crew Cars, Customs" FontSize="11" Foreground="#E2E8F0" TextWrapping="Wrap"/>
+                    </Grid>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="6">
+                    <TextBlock Text="Modern Aviation FTW" FontSize="12" FontWeight="SemiBold" Foreground="#60A5FA"/>
+                    <Grid ColumnDefinitions="90,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
+                      <TextBlock Grid.Row="0" Grid.Column="0" Text="ASRI" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="0" Grid.Column="1" Text="128.95 MHz" FontSize="11" Foreground="#E2E8F0"/>
+                      
+                      <TextBlock Grid.Row="1" Grid.Column="0" Text="Phone" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="1" Grid.Column="1" Text="817-289-8000" FontSize="11" Foreground="#60A5FA"/>
+                      
+                      <TextBlock Grid.Row="2" Grid.Column="0" Text="Features" FontSize="10" Foreground="#94A3B8"/>
+                      <TextBlock Grid.Row="2" Grid.Column="1" Text="Free Crew Cars, Snacks, 11 Acres Ramp, Climate Hangar" FontSize="11" Foreground="#E2E8F0" TextWrapping="Wrap"/>
+                    </Grid>
+                  </StackPanel>
+                </StackPanel>
+              </Border>
+              
+              <!-- Additional Facilities -->
+              <Border Background="#0F172A" CornerRadius="8" Padding="12" Margin="0,0,0,12">
+                <StackPanel Spacing="6">
+                  <TextBlock Text="🔧 Additional Facilities" FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Broadie's Aircraft" FontSize="11" FontWeight="SemiBold" Foreground="#60A5FA"/>
+                    <TextBlock Text="FAA Repair Station, Cessna Service Center" FontSize="11" Foreground="#E2E8F0" TextWrapping="Wrap"/>
+                    <TextBlock Text="Phone: 817-626-1532" FontSize="10" Foreground="#94A3B8"/>
+                  </StackPanel>
+                  
+                  <StackPanel Spacing="4">
+                    <TextBlock Text="Vintage Flying Museum" FontSize="11" FontWeight="SemiBold" Foreground="#60A5FA"/>
+                    <TextBlock Text="On-airport attraction" FontSize="11" Foreground="#E2E8F0"/>
+                    <TextBlock Text="Phone: 817-624-1935" FontSize="10" Foreground="#94A3B8"/>
+                  </StackPanel>
+                </StackPanel>
+              </Border>
+              
+              <!-- Operations -->
+              <Border Background="#0F172A" CornerRadius="8" Padding="12">
+                <StackPanel Spacing="6">
+                  <TextBlock Text="✈️ Operations" FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9" Margin="0,0,0,8"/>
+                  
+                  <Grid ColumnDefinitions="110,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="6">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Attendance" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Continuous" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Lighting" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Sunset to Sunrise" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Beacon" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="White-Green (Lighted)" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="ARFF" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="Index A (Index B with PPR)" FontSize="12" Foreground="#E2E8F0"/>
+                    
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="ARTCC" FontSize="10" Foreground="#94A3B8"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="Fort Worth Center" FontSize="12" Foreground="#E2E8F0"/>
+                  </Grid>
+                </StackPanel>
+              </Border>
+            </StackPanel>
+          </ScrollViewer>
+        </DockPanel>
+      </Border>
+    </Grid>
   </Grid>
 </UserControl>
