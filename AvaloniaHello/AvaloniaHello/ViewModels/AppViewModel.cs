@@ -14,6 +14,7 @@ public partial class AppViewModel : ViewModelBase
     private readonly string _pdfFilePath;
     private readonly IPdfPresenter _pdfPresenter;
     private ViewModelBase? _embeddedPdfViewModel;
+    private MapsViewModel? _mapsViewModel;
 
     public AppViewModel()
         : this(PdfPresenter.Current)
@@ -36,8 +37,9 @@ public partial class AppViewModel : ViewModelBase
 
         ShowPdfViewerCommand = new AsyncRelayCommand(ShowPdfViewerAsync, () => File.Exists(_pdfFilePath));
         ShowHomeCommand = new RelayCommand(ShowHome);
+        ShowMapsCommand = new RelayCommand(ShowMaps);
 
-        HomeViewModel = new MainViewModel(() => ShowPdfViewerCommand.Execute(null));
+        HomeViewModel = new MainViewModel(() => ShowPdfViewerCommand.Execute(null), ShowMaps);
 
         CurrentViewModel = HomeViewModel;
     }
@@ -50,6 +52,8 @@ public partial class AppViewModel : ViewModelBase
     public IAsyncRelayCommand ShowPdfViewerCommand { get; }
 
     public IRelayCommand ShowHomeCommand { get; }
+
+    public IRelayCommand ShowMapsCommand { get; }
 
     private void ShowHome()
     {
@@ -100,6 +104,16 @@ public partial class AppViewModel : ViewModelBase
         Console.WriteLine("Setting CurrentViewModel to PDF viewer");
         CurrentViewModel = _embeddedPdfViewModel;
         Console.WriteLine("PDF viewer should now be displayed");
+    }
+
+    private void ShowMaps()
+    {
+        if (_mapsViewModel is null)
+        {
+            _mapsViewModel = new MapsViewModel(ShowHome);
+        }
+
+        CurrentViewModel = _mapsViewModel;
     }
 
     private static string ResolvePdfPath()

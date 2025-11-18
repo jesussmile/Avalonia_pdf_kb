@@ -7,11 +7,14 @@ namespace AvaloniaHello.ViewModels;
 public partial class MainViewModel : ViewModelBase
 {
     private readonly Action? _openPdfCallback;
+    private readonly Action? _openMapsCallback;
 
-    public MainViewModel(Action? openPdfCallback = null)
+    public MainViewModel(Action? openPdfCallback = null, Action? openMapsCallback = null)
     {
         _openPdfCallback = openPdfCallback;
+        _openMapsCallback = openMapsCallback;
         OpenPdfCommand = new RelayCommand(() => _openPdfCallback?.Invoke(), () => _openPdfCallback is not null);
+        OpenMapsCommand = new RelayCommand(() => _openMapsCallback?.Invoke(), () => _openMapsCallback is not null);
     }
 
     [ObservableProperty]
@@ -21,4 +24,6 @@ public partial class MainViewModel : ViewModelBase
     private string _userMessage = string.Empty;
 
     public IRelayCommand OpenPdfCommand { get; }
+
+    public IRelayCommand OpenMapsCommand { get; }
 }

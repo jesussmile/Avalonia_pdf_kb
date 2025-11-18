@@ -20,6 +20,9 @@
         <PackageVersion Include="MuPDFCore.MuPDFRenderer" Version="2.0.1" />
         <PackageVersion Include="MuPDFCore.NativeAssets.Win-x64" Version="2.0.1" />
 
+        <PackageVersion Include="Mapsui.Avalonia" Version="4.1.9" />
+        <PackageVersion Include="Mapsui" Version="4.1.9" />
+
         <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.15" />
     </ItemGroup>
 </Project>

@@ -29,5 +29,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="MuPDFCore.MuPDFRenderer" />
     <PackageReference Include="MuPDFCore.NativeAssets.Win-x64" />
+    <PackageReference Include="Mapsui.Avalonia" />
+    <PackageReference Include="Mapsui" />
   </ItemGroup>
 </Project>
